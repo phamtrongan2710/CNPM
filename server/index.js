@@ -11,11 +11,6 @@ async function fun() {
       connectionString: "(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST=localhost)(PORT=1521))(CONNECT_DATA=(SERVER=G07)(SID=xe)))",
       privilege: oracledb.SYSDBA
     })
-
-    const data = await con.execute(
-      'SELECT * FROM TB_ACCOUNT',
-    )
-    console.log(data.rows);
     
   } catch(err) {
     console.error(err);
