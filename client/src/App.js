@@ -1,16 +1,19 @@
 // import "./App.css";
 import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
-// import pages
-import Home from "./pages/Home";
+// routing
+import { publicRoutes } from "./routes";
 
 function App() {
     return (
         <div className="overflow-hidden">
             <Router>
                 <Routes>
-                    <Route path="/" element={<Home />} />
+                    {publicRoutes.map((route) => {
+                        const Page = route.component;
+
+                        return <Route path={route.path} element={<Page />} />;
+                    })}
                 </Routes>
             </Router>
         </div>
