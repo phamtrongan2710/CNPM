@@ -112,7 +112,7 @@ class AuthController {
 
                     return res.send({
                         accessToken: accessToken,
-                        expiresIn: "1h"
+                        expiresIn: process.env.ACCESS_TOKEN_EXPIRESIN
                     })
                 })
             }
@@ -122,7 +122,7 @@ class AuthController {
             else {
                 return res.send({
                     accessToken: accessToken,
-                    expiresIn: "1h"
+                    expiresIn: process.env.ACCESS_TOKEN_EXPIRESIN
                 })
             }
         })
