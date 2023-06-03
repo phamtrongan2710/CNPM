@@ -1,59 +1,30 @@
-import { Fragment } from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DefaultLayout from './layouts/DefaultLayout'
-import { publicRoutes } from './routes'
-
-import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import { useState, useEffect } from 'react'
-import io from 'socket.io-client'
-import SocketContext from './contexts/socket';
+// import "./App.css";
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+// routing
+import { publicRoutes } from "./routes";
+// header & footer
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
-	const [ socket, setSocket ] = useState(null)
-  
-	useEffect(() => {
-	  const newSocket = io('http://localhost:8080')
-	  setSocket(newSocket)
-	  
-	  return () => {
-		setSocket(null)
-		newSocket.close()
-	  }
-	}, [])
+    return (
+        <div className="overflow-hidden">
+            <Router>
+                <Header />
 
-	return (
-		<SocketContext.Provider value={socket}>
-			<Router>
-				<div className="App">
-					<ToastContainer />
-					<Routes>
-						{publicRoutes.map((route, index) => {
-							const Page = route.component;
-							let Layout = DefaultLayout;
+                <Routes>
+                    {publicRoutes.map((route) => {
+                        const Page = route.component;
 
-							if (route.layout) {
-								Layout = route.layout;
-							} else if (route.layout === null) {
-								Layout = Fragment;
-							}
-							return (
-								<Route
-									key={index}
-									path={route.path}
-									element={
-										<Layout>
-											<Page />
-										</Layout>
-									}
-								/>
-							);
-						})}
-					</Routes>
-				</div>
-			</Router>
-		</SocketContext.Provider>
-	);
+                        return <Route path={route.path} element={<Page />} />;
+                    })}
+                </Routes>
+
+                <Footer />
+            </Router>
+        </div>
+    );
 }
 
 export default App;
