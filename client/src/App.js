@@ -13,14 +13,16 @@ function App() {
         <div className="overflow-hidden">
             <Router>
                 <Routes>
-                    {publicRoutes.map((route) => {
+                    {publicRoutes.map((route, index) => {
                         const Page = route.component;
                         let Layout = DefaultLayout;
+                        console.log(`index: ${index}`);
 
                         if (route.layout) Layout = route.layout;
 
                         return (
                             <Route
+                                key={index}
                                 path={route.path}
                                 element={
                                     <Layout>

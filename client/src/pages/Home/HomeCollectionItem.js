@@ -10,6 +10,7 @@ const HomeCollectionItem = ({ urlImage, title, amountItem }) => {
     const notHoverItemEvent = () => {
         setIsItemHover(false);
     };
+
     return (
         <div
             style={{
@@ -21,21 +22,23 @@ const HomeCollectionItem = ({ urlImage, title, amountItem }) => {
             }}
             onMouseEnter={hoverItemEvent}
             onMouseLeave={notHoverItemEvent}
-            className="flex flex-col justify-end cursor-pointer"
+            className="flex flex-col justify-end cursor-pointer overflow-hidden"
         >
             <div className="flex items-center justify-between px-7 py-5">
                 <div>
                     <p className="text-black text-lg md:text-xl font-medium">
                         {title}
                     </p>
+
                     <p className="mt-4 text-color-subtext">
                         {amountItem} items
                     </p>
                 </div>
+
                 <div
                     className={
-                        "relative w-11 h-11 " +
-                        (isItemHover ? "text-white" : "text-black")
+                        "relative w-11 h-11" +
+                        (isItemHover ? " text-white" : "text-black")
                     }
                 >
                     <div
@@ -44,6 +47,7 @@ const HomeCollectionItem = ({ urlImage, title, amountItem }) => {
                             (isItemHover ? "bg-black" : "bg-white")
                         }
                     ></div>
+                    
                     <button
                         style={{
                             top: "50%",
