@@ -7,9 +7,14 @@ import { BiSearch } from "react-icons/bi";
 import { VscSignOut } from "react-icons/vsc";
 import { RiShoppingBagLine } from "react-icons/ri";
 
+// components
+import SearchBar from "./SearchBar";
+
 const Header = () => {
     // header state
     const [isActive, setIsActive] = useState(false);
+    // search bar state
+    const [showSearch, setShowSearch] = useState(false);
 
     // event listener
     useEffect(() => {
@@ -17,6 +22,10 @@ const Header = () => {
             window.scrollY > 100 ? setIsActive(true) : setIsActive(false);
         });
     });
+
+    const openSearch = () => {
+        setShowSearch(true);
+    };
 
     return (
         <header
@@ -52,9 +61,13 @@ const Header = () => {
                     </div>
 
                     {/* search icon */}
-                    <div className="cursor-pointer px-2 lg:px-3">
+                    <div
+                        className="cursor-pointer px-2 lg:px-3"
+                        onClick={openSearch}
+                    >
                         <BiSearch className="text-xl" />
                     </div>
+                    {showSearch && <SearchBar setShowSearch={setShowSearch} />}
 
                     {/* cart icon */}
                     <div className="relative cursor-pointer px-2 lg:px-3">
