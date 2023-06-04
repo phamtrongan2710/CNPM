@@ -9,12 +9,15 @@ import { RiShoppingBagLine } from "react-icons/ri";
 
 // components
 import SearchBar from "./SearchBar";
+import Cart from "./Cart";
 
 const Header = () => {
     // header state
     const [isActive, setIsActive] = useState(false);
     // search bar state
     const [showSearch, setShowSearch] = useState(false);
+    // cart state
+    const [showCart, setShowCart] = useState(false);
 
     // event listener
     useEffect(() => {
@@ -25,6 +28,10 @@ const Header = () => {
 
     const openSearch = () => {
         setShowSearch(true);
+    };
+
+    const onClickCart = () => {
+        setShowCart(true);
     };
 
     return (
@@ -70,9 +77,13 @@ const Header = () => {
                     {showSearch && <SearchBar setShowSearch={setShowSearch} />}
 
                     {/* cart icon */}
-                    <div className="relative cursor-pointer px-2 lg:px-3">
+                    <div
+                        className="relative cursor-pointer px-2 lg:px-3"
+                        onClick={onClickCart}
+                    >
                         <RiShoppingBagLine className="text-xl" />
                     </div>
+                    {showCart && <Cart setShowCart={setShowCart} />}
 
                     {/* sign-out icon */}
                     <div className="hidden lg:flex cursor-pointer px-2 lg:px-3">
