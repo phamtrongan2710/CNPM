@@ -1,13 +1,18 @@
+// import pages
 import Home from "../pages/Home/Home";
 import Products from "../pages/Products";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 
+// import layouts
+import DefaultLayout from "../layouts/DefaultLayout";
+import LoginLayout from "../layouts/LoginLayout";
+
 const publicRoutes = [
-    { path: "/", component: Home },
-    { path: "/product", component: Products },
-    { path: "/signin", component: Signin },
-    { path: "/signup", component: Signup },
+    { path: "/", component: Home, layout: DefaultLayout },
+    { path: "/product", component: Products, layout: DefaultLayout },
+    { path: "/signin", component: Signin, layout: LoginLayout },
+    { path: "/signup", component: Signup, layout: LoginLayout },
 ];
 
 export { publicRoutes };
