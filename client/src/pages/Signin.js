@@ -5,6 +5,7 @@ const Signin = () => {
     return (
         <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0 w-full">
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-full">
+                {/* login header */}
                 <div className="flex justify-between">
                     <div></div>
                     <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-4xl w-4/5">
@@ -12,7 +13,9 @@ const Signin = () => {
                     </h1>
                 </div>
 
+                {/* input fields */}
                 <div className="space-y-4 md:space-y-6">
+                    {/* username */}
                     <div className="flex items-baseline justify-between">
                         <label className="block mb-2 font-medium text-gray-900">
                             Username
@@ -24,6 +27,7 @@ const Signin = () => {
                         />
                     </div>
 
+                    {/* password */}
                     <div className="flex items-baseline justify-between">
                         <label className="block mb-2 font-medium text-gray-900">
                             Password
@@ -35,7 +39,9 @@ const Signin = () => {
                         />
                     </div>
 
+                    {/* remember me checkbox & forgot password button */}
                     <div className="flex items-center justify-between">
+                        {/* remember me checkbox */}
                         <div className="flex items-start">
                             <div className="flex items-center h-5">
                                 <input
@@ -49,6 +55,8 @@ const Signin = () => {
                                 </label>
                             </div>
                         </div>
+
+                        {/* forgot password button */}
                         <a
                             href="#"
                             className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
@@ -56,9 +64,13 @@ const Signin = () => {
                             Forgot password?
                         </a>
                     </div>
+
+                    {/* login button */}
                     <button className="w-full text-red-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold px-3 py-1 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
                         Log in
                     </button>
+
+                    {/* link to signup page */}
                     <p className="text-sm font-medium text-gray-900">
                         Need an account?{" "}
                         <Link
