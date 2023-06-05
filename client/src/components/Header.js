@@ -62,7 +62,7 @@ const Header = () => {
                     <div className="cursor-pointer px-2 lg:px-3">
                         <Link to="/signin">
                             <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
-                                Sign in
+                                Log in
                             </button>
                         </Link>
                     </div>
