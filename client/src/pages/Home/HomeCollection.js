@@ -52,7 +52,7 @@ const HomeCollection = () => {
 
     return (
         <div>
-            <h1 className="text-3xl mb-10 flex justify-center">
+            <h1 className="text-3xl mb-10 text-center">
                 Season Collection
             </h1>
 

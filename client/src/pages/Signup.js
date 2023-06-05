@@ -65,7 +65,7 @@ const Signup = () => {
 
                     {/* sign up button */}
                     <button className="w-full text-red-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold px-3 py-1 rounded outline-none focus:outline-none ease-linear transition-all duration-150">
-                        Sign Up
+                        Sign up
                     </button>
 
                     {/* link to sign in page */}
@@ -75,7 +75,7 @@ const Signup = () => {
                             to="/signin"
                             className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                         >
-                            Sign In
+                            Log in
                         </Link>
                     </p>
                 </div>
