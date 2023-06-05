@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 // icons
 import SevenIcon from "../assets/Se7enStore.svg";
 import { BiSearch } from "react-icons/bi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscSignOut } from "react-icons/vsc";
-import { RiShoppingBagLine } from "react-icons/ri";
 
 // components
 import SearchBar from "./SearchBar";
@@ -62,7 +62,7 @@ const Header = () => {
                     <div className="cursor-pointer px-2 lg:px-3">
                         <Link to="/signin">
                             <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
-                                Sign in
+                                Log in
                             </button>
                         </Link>
                     </div>
@@ -81,7 +81,7 @@ const Header = () => {
                         className="relative cursor-pointer px-2 lg:px-3"
                         onClick={onClickCart}
                     >
-                        <RiShoppingBagLine className="text-xl" />
+                        <AiOutlineShoppingCart className="text-xl" />
                     </div>
                     {showCart && <Cart setShowCart={setShowCart} />}
 
