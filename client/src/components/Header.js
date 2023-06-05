@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 // icons
 import SevenIcon from "../assets/Se7enStore.svg";
 import { BiSearch } from "react-icons/bi";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 import { VscSignOut } from "react-icons/vsc";
-import { RiShoppingBagLine } from "react-icons/ri";
 
 // components
 import SearchBar from "./SearchBar";
@@ -81,7 +81,7 @@ const Header = () => {
                         className="relative cursor-pointer px-2 lg:px-3"
                         onClick={onClickCart}
                     >
-                        <RiShoppingBagLine className="text-xl" />
+                        <AiOutlineShoppingCart className="text-xl" />
                     </div>
                     {showCart && <Cart setShowCart={setShowCart} />}
 

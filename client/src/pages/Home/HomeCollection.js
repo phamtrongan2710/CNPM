@@ -52,9 +52,7 @@ const HomeCollection = () => {
 
     return (
         <div>
-            <h1 className="text-3xl mb-10 text-center">
-                Season Collection
-            </h1>
+            <h1 className="text-3xl mb-10 text-center">Season Collection</h1>
 
             {/* collection items */}
             <Swiper
@@ -63,6 +61,9 @@ const HomeCollection = () => {
                 breakpoints={{
                     370: {
                         slidesPerView: 1.2,
+                    },
+                    640: {
+                        slidesPerView: 2,
                     },
                     768: {
                         slidesPerView: 5,
