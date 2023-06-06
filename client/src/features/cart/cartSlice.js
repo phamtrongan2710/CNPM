@@ -2,13 +2,13 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export const cartSlice = createSlice({
     name: "cart",
+
     initialState: {
-        value: 0,
+        cart: [],
     },
+
     reducers: {
-        add: (state) => {
-            state.value += 1;
-        },
+        addToCart: (state, action) => {},
     },
 });
 
