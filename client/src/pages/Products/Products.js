@@ -21,7 +21,7 @@ const Products = () => {
             {/* heading */}
             <div class="m-auto text-center">
                 <h1 class="text-3xl  m-auto mt-[20px] item-center mb-10">
-                    Out products
+                    Our products
                 </h1>
             </div>
 
