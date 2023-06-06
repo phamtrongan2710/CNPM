@@ -1,10 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
+
 const ProductItem = ({ data }) => {
     // hover state
     const [isHoverCard, setIsHoverCard] = useState(false);
     const [isHoverImage, setIsHoverImage] = useState(false);
+
+    const dispatch = useDispatch();
 
     console.log(data);
 
@@ -53,6 +58,7 @@ const ProductItem = ({ data }) => {
                                 (isHoverCard ? "-translate-y-16" : "")
                             }
                         >
+                            {/* view-product-detail button */}
                             <Link to={`/product/${data.id}`} state={data}>
                                 <button
                                     className={
@@ -63,9 +69,18 @@ const ProductItem = ({ data }) => {
                                 </button>
                             </Link>
 
+                            {/* add-to-cart button */}
                             <button
                                 className={
                                     "w-1/2 shadow-md font-bold rounded p-2 bg-white hover:bg-red-500 hover:text-white transition duration-200 text-red-500"
+                                }
+                                onClick={() =>
+                                    dispatch(
+                                        addToCart({
+                                            data,
+                                            amount: 1,
+                                        })
+                                    )
                                 }
                             >
                                 +
