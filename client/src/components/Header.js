@@ -54,7 +54,9 @@ const Header = () => {
                 </div>
 
                 <div className="flex-1 flex items-center">
-                    <h1>Products</h1>
+                    <Link to="/product">
+                        <h1>Products</h1>
+                    </Link>
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">

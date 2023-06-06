@@ -1,6 +1,6 @@
 // import pages
 import Home from "../pages/Home/Home";
-import Products from "../pages/Products";
+import Products from "../pages/Products/Products";
 import ProductDetail from "../pages/ProductDetail";
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
