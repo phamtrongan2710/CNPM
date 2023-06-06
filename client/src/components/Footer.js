@@ -1,9 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 // icons
 import { BiLocationPlus, BiPhoneCall } from "react-icons/bi";
+import Cart from "./Cart";
 
 const Footer = () => {
+    const [showCart, setShowCart] = useState(false);
+    const onClickCart = () => {
+        setShowCart(true);
+    };
+
     return (
         <footer className="bg-neutral-100">
             <div className="flex justify-center px-8 border-b">
@@ -42,11 +49,19 @@ const Footer = () => {
                                         <a href="/">My account</a>
                                     </li>
                                     <li className="leading-8">
-                                        <a href="/">Products</a>
+                                        <Link to="/product">Products</Link>
                                     </li>
 
                                     <li className="leading-8">
-                                        <a href="/">Cart</a>
+                                        <div
+                                            className="cursor-pointer"
+                                            onClick={onClickCart}
+                                        >
+                                            Cart
+                                        </div>
+                                        {showCart && (
+                                            <Cart setShowCart={setShowCart} />
+                                        )}
                                     </li>
 
                                     <li className="leading-8">

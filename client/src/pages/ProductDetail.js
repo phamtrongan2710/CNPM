@@ -1,8 +1,23 @@
-import {  useLocation,  } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
 const ProductDetail = (props) => {
     const location = useLocation();
     const state = location.state;
+
+    // scroll to the top of the page
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    // if product can't be found
+    if (!state) {
+        return (
+            <section className="h-screen flex justify-center items-center">
+                Loading...
+            </section>
+        );
+    }
 
     return (
         <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">

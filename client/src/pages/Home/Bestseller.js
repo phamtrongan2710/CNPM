@@ -7,6 +7,7 @@ const HomeBestSeller = () => {
     // item limit: 5
     const [limitItem, setLimitItem] = useState(5);
 
+    // fetch all products
     useEffect(() => {
         axios
             .get("product/getAllProduct")
