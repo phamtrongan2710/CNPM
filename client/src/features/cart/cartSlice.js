@@ -23,6 +23,7 @@ export const cartSlice = createSlice({
             //     state.cart.push({ ...action.payload, quantity: 1 });
             // }
             let contain = false;
+
             state.cart.map((item, index) => {
                 if (item.data.data.id == action.payload.data.id) contain = true;
             });
@@ -33,6 +34,11 @@ export const cartSlice = createSlice({
     },
 });
 
-export const addToCart = cartSlice.actions;
+// export const addToCart = cartSlice.actions;
+
+// export default cartSlice.reducer;
+
+// Action creators are generated for each case reducer function
+export const { addToCart } = cartSlice.actions;
 
 export default cartSlice.reducer;

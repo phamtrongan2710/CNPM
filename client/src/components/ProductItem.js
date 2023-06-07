@@ -11,6 +11,11 @@ const ProductItem = ({ data }) => {
 
     const dispatch = useDispatch();
 
+    const addCart = (data) => {
+        dispatch(addToCart(data));
+        // notifySuccessAddItem()
+    };
+
     console.log(data);
 
     return (
@@ -74,14 +79,7 @@ const ProductItem = ({ data }) => {
                                 className={
                                     "w-1/2 shadow-md font-bold rounded p-2 bg-white hover:bg-red-500 hover:text-white transition duration-200 text-red-500"
                                 }
-                                onClick={() =>
-                                    dispatch(
-                                        addToCart({
-                                            data,
-                                            amount: 1,
-                                        })
-                                    )
-                                }
+                                onClick={() => addCart({ data, amount: 1 })}
                             >
                                 +
                             </button>
