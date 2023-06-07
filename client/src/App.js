@@ -9,13 +9,14 @@ import Footer from "./components/Footer";
 import DefaultLayout from "./layouts/DefaultLayout";
 // toast messages container
 import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
     return (
         <div className="overflow-hidden">
             <Router>
                 <ToastContainer />
-                
+
                 <Routes>
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;

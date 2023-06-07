@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
-
+// toast messages
 import { toast } from "react-toastify";
 
 const ProductItem = ({ data }) => {
@@ -13,8 +13,18 @@ const ProductItem = ({ data }) => {
 
     const dispatch = useDispatch();
 
-    // toast messages
-    const notify = () => toast("Added to cart.");
+    // toast message
+    const notify = () =>
+        toast("Added to cart.", {
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
 
     const handleAddToCart = (data) => {
         dispatch(addToCart(data));
@@ -64,7 +74,7 @@ const ProductItem = ({ data }) => {
                         {/* view button & "add to cart" button */}
                         <div
                             className={
-                                "hidden md:block w-full px-2 absolute -bottom-12 left-0 transition duration-200 z-20 " +
+                                "hidden md:block w-full px-2 absolute -bottom-12 left-0 transition duration-200 z-5 " +
                                 (isHoverCard ? "-translate-y-16" : "")
                             }
                         >

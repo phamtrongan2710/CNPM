@@ -25,6 +25,18 @@ const Cart = ({ setShowCart }) => {
         setCartStyle("translate-x-0");
     }, []);
 
+    const [data, setData] = useState([]);
+
+    let items = useSelector((state) => state.cart.cart);
+
+    const InitData = () => {
+        setData(items);
+    };
+    
+    useEffect(() => {
+        InitData();
+    }, [items]);
+
     return (
         <div className="flex justify-end fixed top-0 right-0 w-full h-full bg-black bg-opacity-30 z-50">
             <OutsideAlerter
@@ -46,11 +58,14 @@ const Cart = ({ setShowCart }) => {
                 </div>
 
                 <div className="flex flex-col h-full pt-3 pb-10">
+                    {/* cart items */}
                     <div className="flex-1 overflow-y-auto no-scroll md:scroll1">
-                        {/* cart items */}
+                        {data.map((item, index) => (
+                            <CartItem key={index} data={item} />
+                        ))}
                     </div>
 
-                    {/* total & checkout button */}
+                    {/* total price & checkout button */}
                     <div className="">
                         <div className="flex items-center justify-between py-4">
                             <p className="font-medium text-lg">Total</p>
