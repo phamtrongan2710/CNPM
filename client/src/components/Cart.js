@@ -1,8 +1,11 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 // components
 import OutsideAlerter from "./OutsideAlerter";
+import CartItem from "./CartItem";
 
 // icons
 import { IoMdClose } from "react-icons/io";

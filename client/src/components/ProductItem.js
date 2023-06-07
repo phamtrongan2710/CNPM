@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 
+import { toast } from "react-toastify";
+
 const ProductItem = ({ data }) => {
     // hover state
     const [isHoverCard, setIsHoverCard] = useState(false);
@@ -11,9 +13,12 @@ const ProductItem = ({ data }) => {
 
     const dispatch = useDispatch();
 
-    const addCart = (data) => {
+    // toast messages
+    const notify = () => toast("Added to cart.");
+
+    const handleAddToCart = (data) => {
         dispatch(addToCart(data));
-        // notifySuccessAddItem()
+        notify();
     };
 
     console.log(data);
@@ -79,7 +84,9 @@ const ProductItem = ({ data }) => {
                                 className={
                                     "w-1/2 shadow-md font-bold rounded p-2 bg-white hover:bg-red-500 hover:text-white transition duration-200 text-red-500"
                                 }
-                                onClick={() => addCart({ data, amount: 1 })}
+                                onClick={() =>
+                                    handleAddToCart({ data, amount: 1 })
+                                }
                             >
                                 +
                             </button>
