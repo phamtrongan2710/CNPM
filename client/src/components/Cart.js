@@ -77,7 +77,7 @@ const Cart = ({ setShowCart }) => {
 
                             {/* trashcan icon (to clear cart) */}
                             <div
-                                onClick={dispatch(clearCart())}
+                                onClick={() => dispatch(clearCart())}
                                 className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
                             >
                                 <BsFillTrashFill />

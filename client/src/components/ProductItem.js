@@ -17,7 +17,7 @@ const ProductItem = ({ data }) => {
     const notify = () =>
         toast("Added to cart.", {
             position: "top-right",
-            autoClose: 2000,
+            autoClose: 1500,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
