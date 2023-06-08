@@ -28,6 +28,7 @@ const ProductItem = ({ data }) => {
 
     const handleAddToCart = (data) => {
         dispatch(addToCart(data));
+        
         notify();
     };
 

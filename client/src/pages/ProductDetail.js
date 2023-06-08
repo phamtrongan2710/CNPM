@@ -1,9 +1,16 @@
 import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 
+import { useDispatch } from "react-redux";
+import { addToCart } from "../features/cart/cartSlice";
+// toast messages
+import { toast } from "react-toastify";
+
 const ProductDetail = (props) => {
     const location = useLocation();
     const state = location.state;
+
+    const dispatch = useDispatch();
 
     // scroll to the top of the page
     useEffect(() => {
@@ -18,6 +25,30 @@ const ProductDetail = (props) => {
             </section>
         );
     }
+
+    // toast message
+    const notify = () =>
+        toast("Added to cart.", {
+            position: "top-right",
+            autoClose: 1500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+        });
+
+    const handleAddToCart = () => {
+        dispatch(
+            addToCart({
+                data: state,
+                amount: 1,
+            })
+        );
+
+        notify();
+    };
 
     return (
         <section className="pt-32 pb-12 lg:py-32 h-screen flex items-center">
@@ -46,6 +77,7 @@ const ProductDetail = (props) => {
 
                         {/* add-to-cart button */}
                         <button
+                            onClick={handleAddToCart}
                             type="button"
                             class="py-4 px-8 h-[50px] rounded-md border-black border border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105 "
                         >
