@@ -1,11 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+import { useSelector } from "react-redux";
+
 // components
 import OutsideAlerter from "./OutsideAlerter";
+import CartItem from "./CartItem";
 
 // icons
 import { IoMdClose } from "react-icons/io";
+import { BsFillTrashFill } from "react-icons/bs";
 
 const Cart = ({ setShowCart }) => {
     const [cartStyle, setCartStyle] = useState("translate-x-full");
@@ -21,6 +25,18 @@ const Cart = ({ setShowCart }) => {
     useEffect(() => {
         setCartStyle("translate-x-0");
     }, []);
+
+    const [data, setData] = useState([]);
+
+    let items = useSelector((state) => state.cart.cart);
+
+    const InitData = () => {
+        setData(items);
+    };
+
+    useEffect(() => {
+        InitData();
+    }, [items]);
 
     return (
         <div className="flex justify-end fixed top-0 right-0 w-full h-full bg-black bg-opacity-30 z-50">
@@ -43,16 +59,26 @@ const Cart = ({ setShowCart }) => {
                 </div>
 
                 <div className="flex flex-col h-full pt-3 pb-10">
-                    <div className="flex-1 overflow-y-auto no-scroll md:scroll1">
-                        {/* cart items */}
+                    {/* cart items */}
+                    <div className="flex-1 overflow-y-auto no-scroll">
+                        {data.map((item, index) => (
+                            <CartItem key={index} data={item} />
+                        ))}
                     </div>
 
-                    {/* total & checkout button */}
-                    <div className="">
+                    {/* total price, clear-cart button, & checkout button container */}
+                    <div>
                         <div className="flex items-center justify-between py-4">
-                            <p className="font-medium text-lg">Total</p>
+                            {/* total price */}
+                            <p className="font-medium text-lg">Total: $ 00</p>
+
+                            {/* trashcan icon (to clear cart) */}
+                            <div className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl">
+                                <BsFillTrashFill />
+                            </div>
                         </div>
 
+                        {/* checkout button */}
                         <Link to="/checkout">
                             <button
                                 onClick={closeCart}

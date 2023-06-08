@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "../../api";
 
-import Products_Item from "./Products_Item";
+// import Products_Item from "./Products_Item";
+import ProductItem from "../../components/ProductItem";
 
 const Products = () => {
     const [data, setData] = useState([]);
@@ -20,7 +21,7 @@ const Products = () => {
             {/* heading */}
             <div class="m-auto text-center">
                 <h1 class="text-3xl  m-auto mt-[20px] item-center mb-10">
-                    Out products
+                    Our products
                 </h1>
             </div>
 
@@ -28,7 +29,8 @@ const Products = () => {
             {/* <div class="grid grid-cols-5 gap-x-4 gap-y-90"> */}
             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                 {data.map((item, index) => (
-                    <Products_Item item={item} />
+                    // <Products_Item data={item} />
+                    <ProductItem data={item} />
                 ))}
             </div>
         </div>

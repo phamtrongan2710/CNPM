@@ -1,6 +1,8 @@
-import BestsellerItem from "./BestsellerItem";
 import { useState, useEffect } from "react";
 import axios from "../../api";
+
+// import BestsellerItem from "./BestsellerItem";
+import ProductItem from "../../components/ProductItem";
 
 const HomeBestSeller = () => {
     const [data, setData] = useState([]);
@@ -25,7 +27,8 @@ const HomeBestSeller = () => {
                 {data.map((item, index) => {
                     if (index >= limitItem) return;
 
-                    return <BestsellerItem key={item.id} data={item} />;
+                    // return <BestsellerItem key={item.id} data={item} />;
+                    return <ProductItem key={item.id} data={item} />;
                 })}
             </div>
 
