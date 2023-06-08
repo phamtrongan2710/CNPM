@@ -85,9 +85,9 @@ const CartItem = ({ data }) => {
 
                         {/* remove icon (to remove item from cart) */}
                         <div
-                            onClick={dispatch(
-                                removeFromCart(data.data.data.id)
-                            )}
+                            onClick={() =>
+                                dispatch(removeFromCart(data.data.data.id))
+                            }
                             className="text-xl cursor-pointer"
                         >
                             <IoMdClose />
