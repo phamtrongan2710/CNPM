@@ -32,9 +32,35 @@ export const cartSlice = createSlice({
                 state.cart = [...state.cart, { data: action.payload }];
         },
 
-        increaseQuantity: (state, action) => {},
+        increaseQuantity: (state, action) => {
+            let arr = [];
 
-        decreaseQuantity: (state, action) => {},
+            state.cart.forEach((item) => {
+                if (item.data.data.id == action.payload) {
+                    item.data.amount += 1;
+                }
+                
+                arr = [...arr, item];
+            });
+
+            state.cart = arr;
+        },
+
+        decreaseQuantity: (state, action) => {
+            let arr = [];
+
+            state.cart.forEach((item) => {
+                if (item.data.data.id == action.payload) {
+                    item.data.amount -= 1;
+                }
+
+                if (item.data.amount != 0) {
+                    arr = [...arr, item];
+                }
+            });
+
+            state.cart = arr;
+        },
 
         removeFromCart: (state, action) => {
             state.cart = state.cart.filter(

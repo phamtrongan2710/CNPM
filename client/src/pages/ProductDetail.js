@@ -79,7 +79,7 @@ const ProductDetail = (props) => {
                         <button
                             onClick={handleAddToCart}
                             type="button"
-                            class="py-4 px-8 h-[50px] rounded-md border-black border border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105 "
+                            class="py-3 px-8  rounded-md border border-black border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105"
                         >
                             Add to cart
                         </button>

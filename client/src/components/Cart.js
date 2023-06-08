@@ -57,7 +57,6 @@ const Cart = ({ setShowCart }) => {
                     <IoMdClose
                         onClick={closeCart}
                         className="cursor-pointer w-8 h-8 flex justify-center items-center"
-                        s
                     />
                 </div>
 
