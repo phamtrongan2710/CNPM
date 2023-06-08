@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../features/cart/cartSlice";
 
 // components
 import OutsideAlerter from "./OutsideAlerter";
@@ -38,6 +39,8 @@ const Cart = ({ setShowCart }) => {
         InitData();
     }, [items]);
 
+    const dispatch = useDispatch();
+
     return (
         <div className="flex justify-end fixed top-0 right-0 w-full h-full bg-black bg-opacity-30 z-50">
             <OutsideAlerter
@@ -73,7 +76,10 @@ const Cart = ({ setShowCart }) => {
                             <p className="font-medium text-lg">Total: $ 00</p>
 
                             {/* trashcan icon (to clear cart) */}
-                            <div className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl">
+                            <div
+                                onClick={dispatch(clearCart())}
+                                className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
+                            >
                                 <BsFillTrashFill />
                             </div>
                         </div>
