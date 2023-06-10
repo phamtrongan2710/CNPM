@@ -1,5 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useSelector } from "react-redux";
 
 // icons
 import SevenIcon from "../assets/Se7enStore.svg";
@@ -33,6 +35,10 @@ const Header = () => {
     const onClickCart = () => {
         setShowCart(true);
     };
+
+    let itemAmount = useSelector((state) => state.cart.cart).length;
+
+    // console.log(useSelector((state) => state.cart.cart[0].data.amount));
 
     return (
         <header
@@ -84,6 +90,10 @@ const Header = () => {
                         onClick={onClickCart}
                     >
                         <AiOutlineShoppingCart className="text-xl" />
+
+                        <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
+                            {itemAmount}
+                        </div>
                     </div>
                     {showCart && <Cart setShowCart={setShowCart} />}
 

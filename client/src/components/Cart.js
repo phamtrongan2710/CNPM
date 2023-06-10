@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { clearCart } from "../features/cart/cartSlice";
 
 // components
 import OutsideAlerter from "./OutsideAlerter";
@@ -13,6 +14,7 @@ import { BsFillTrashFill } from "react-icons/bs";
 
 const Cart = ({ setShowCart }) => {
     const [cartStyle, setCartStyle] = useState("translate-x-full");
+    const dispatch = useDispatch();
 
     const closeCart = () => {
         setCartStyle("translate-x-full");
@@ -27,16 +29,25 @@ const Cart = ({ setShowCart }) => {
     }, []);
 
     const [data, setData] = useState([]);
+    const [total, setTotal] = useState(0);
 
     let items = useSelector((state) => state.cart.cart);
 
     const InitData = () => {
         setData(items);
+
+        let temp = 0;
+        items.forEach(
+            (item) => (temp += +item.data.data.price * +item.data.amount)
+        );
+        setTotal(temp);
     };
 
     useEffect(() => {
         InitData();
     }, [items]);
+
+    let itemAmount = useSelector((state) => state.cart.cart).length;
 
     return (
         <div className="flex justify-end fixed top-0 right-0 w-full h-full bg-black bg-opacity-30 z-50">
@@ -48,13 +59,12 @@ const Cart = ({ setShowCart }) => {
                 }
             >
                 <div className="flex items-center justify-between p-2 border-b">
-                    <p className="text-2xl font-medium">Cart</p>
+                    <p className="text-2xl font-medium">Cart ({itemAmount})</p>
 
                     {/* close button */}
                     <IoMdClose
                         onClick={closeCart}
                         className="cursor-pointer w-8 h-8 flex justify-center items-center"
-                        s
                     />
                 </div>
 
@@ -70,10 +80,15 @@ const Cart = ({ setShowCart }) => {
                     <div>
                         <div className="flex items-center justify-between py-4">
                             {/* total price */}
-                            <p className="font-medium text-lg">Total: $ 00</p>
+                            <p className="font-medium text-lg">
+                                Total: $ {total}
+                            </p>
 
                             {/* trashcan icon (to clear cart) */}
-                            <div className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl">
+                            <div
+                                onClick={() => dispatch(clearCart())}
+                                className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
+                            >
                                 <BsFillTrashFill />
                             </div>
                         </div>
