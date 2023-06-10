@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "../../api";
 
-// import Products_Item from "./Products_Item";
 import ProductItem from "../../components/ProductItem";
 
 const Products = () => {
