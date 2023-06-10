@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../features/user/userSlice";
+import { clearCart } from "../features/cart/cartSlice";
 
 // icons
 import SevenIcon from "../assets/Se7enStore.svg";
@@ -20,6 +22,17 @@ const Header = () => {
     const [showSearch, setShowSearch] = useState(false);
     // cart state
     const [showCart, setShowCart] = useState(false);
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    const handleSignout = () => {
+        dispatch(signOut());
+        dispatch(clearCart());
+        navigate("/");
+    };
 
     // event listener
     useEffect(() => {
@@ -66,6 +79,8 @@ const Header = () => {
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">
+                    <div>{user.user ? <h1>loged in</h1> : <h1>guest</h1>}</div>
+
                     {/* signin button */}
                     <div className="cursor-pointer px-2 lg:px-3">
                         <Link to="/signin">
@@ -99,7 +114,10 @@ const Header = () => {
                     {showCart && <Cart setShowCart={setShowCart} />}
 
                     {/* sign-out icon */}
-                    <div className="hidden lg:flex cursor-pointer px-2 lg:px-3">
+                    <div
+                        onClick={handleSignout}
+                        className="hidden lg:flex cursor-pointer px-2 lg:px-3"
+                    >
                         <VscSignOut className="text-xl" />
                     </div>
                 </div>

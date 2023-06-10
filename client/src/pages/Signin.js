@@ -5,8 +5,14 @@ import axios from "../api";
 // toast messages
 import { toast } from "react-toastify";
 
+import { useSelector, useDispatch } from "react-redux";
+import { login } from "../features/user/userSlice";
+
 const Signin = () => {
     const navigate = useNavigate();
+
+    const user = useSelector((state) => state.user);
+    const dispatch = useDispatch();
 
     const [signInValue, setSignInValue] = useState({
         username: "",
@@ -64,6 +70,8 @@ const Signin = () => {
             .then((res) => {
                 if (res.data.accessToken) {
                     notifySuccess("Welcome to our store");
+
+                    dispatch(login(res.data));
 
                     navigate("/");
                 }
