@@ -10,7 +10,7 @@ const Signup = () => {
     const navigate = useNavigate();
 
     const [signupInfo, setSignupInfo] = useState({
-        userName: "",
+        username: "",
         email: "",
         password: "",
         confirmedPassword: "",
@@ -49,7 +49,7 @@ const Signup = () => {
 
     const handleSignUp = () => {
         // check if username input field is empty
-        if (!signupInfo.userName) {
+        if (!signupInfo.username) {
             notifyError("Enter username");
             return;
         }
@@ -81,7 +81,7 @@ const Signup = () => {
 
         axios
             .post("auth/signup", {
-                username: signupInfo.userName,
+                username: signupInfo.username,
                 email: signupInfo.email,
                 password: signupInfo.password,
                 repeat_password: signupInfo.confirmedPassword,
@@ -115,7 +115,7 @@ const Signup = () => {
                         </label>
                         <input
                             type="text"
-                            name="userName"
+                            name="username"
                             onChange={onChangeSignupInfo}
                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-8/12 p-2.5"
                         />
