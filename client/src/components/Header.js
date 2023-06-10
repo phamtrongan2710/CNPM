@@ -91,6 +91,7 @@ const Header = () => {
                     >
                         <AiOutlineShoppingCart className="text-xl" />
 
+                        {/* item amount on cart icon     */}
                         <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
                             {itemAmount}
                         </div>

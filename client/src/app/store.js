@@ -1,25 +1,17 @@
 import { configureStore } from "@reduxjs/toolkit";
 // Redux Persist
 import storage from "redux-persist/lib/storage";
-// import {
-//     persistStore,
-//     persistReducer,
-//     FLUSH,
-//     REHYDRATE,
-//     PAUSE,
-//     PERSIST,
-//     PURGE,
-//     REGISTER,
-// } from "redux-persist";
 import { persistReducer } from "redux-persist";
 // redux thunk
-import thunk from 'redux-thunk'
+import thunk from "redux-thunk";
 // reducers
 import cartReducer from "../features/cart/cartSlice";
+import userReducer from "../features/user/userSlice";
 import { combineReducers } from "redux";
 
 const reducers = combineReducers({
     cart: cartReducer,
+    user: userReducer,
 });
 
 const persistConfig = {
