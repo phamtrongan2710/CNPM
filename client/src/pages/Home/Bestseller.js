@@ -17,6 +17,8 @@ const HomeBestSeller = () => {
             .catch((e) => console.log(e));
     }, []);
 
+    console.log(data);
+
     return (
         <div className="">
             {/* header */}

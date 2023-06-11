@@ -5,6 +5,9 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 // toast messages
 import { toast } from "react-toastify";
+// icons
+import { FiPlus } from "react-icons/fi";
+import { AiFillEye } from "react-icons/ai";
 
 const ProductItem = ({ data }) => {
     // hover state
@@ -28,11 +31,11 @@ const ProductItem = ({ data }) => {
 
     const handleAddToCart = (data) => {
         dispatch(addToCart(data));
-        
+
         notify();
     };
 
-    console.log(data);
+    // console.log(data);
 
     return (
         <div>
@@ -82,11 +85,16 @@ const ProductItem = ({ data }) => {
                             {/* view-product-detail button */}
                             <Link to={`/product/${data.id}`} state={data}>
                                 <button
+                                    // className={
+                                    //     "w-1/2 shadow-md font-medium rounded p-2 bg-white hover:bg-black hover:text-white transition duration-200"
+                                    // }
                                     className={
                                         "w-1/2 shadow-md font-medium rounded p-2 bg-white hover:bg-black hover:text-white transition duration-200"
                                     }
                                 >
-                                    View
+                                    <div className="flex justify-center ">
+                                        <AiFillEye className="h-5 w-5" />
+                                    </div>
                                 </button>
                             </Link>
 
@@ -99,7 +107,9 @@ const ProductItem = ({ data }) => {
                                     handleAddToCart({ data, amount: 1 })
                                 }
                             >
-                                +
+                                <div className="flex justify-center ">
+                                    <FiPlus className="h-5 w-5" />
+                                </div>
                             </button>
                         </div>
                     </div>

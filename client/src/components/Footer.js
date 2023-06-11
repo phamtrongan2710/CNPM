@@ -5,11 +5,15 @@ import { Link } from "react-router-dom";
 import { BiLocationPlus, BiPhoneCall } from "react-icons/bi";
 import Cart from "./Cart";
 
+import { useSelector } from "react-redux";
+
 const Footer = () => {
     const [showCart, setShowCart] = useState(false);
     const onClickCart = () => {
         setShowCart(true);
     };
+
+    const user = useSelector((state) => state.user);
 
     return (
         <footer className="bg-neutral-100">
@@ -52,17 +56,23 @@ const Footer = () => {
                                         <Link to="/product">Products</Link>
                                     </li>
 
-                                    <li className="leading-8">
-                                        <div
-                                            className="cursor-pointer"
-                                            onClick={onClickCart}
-                                        >
-                                            Cart
-                                        </div>
-                                        {showCart && (
-                                            <Cart setShowCart={setShowCart} />
-                                        )}
-                                    </li>
+                                    {user.user ? (
+                                        <li className="leading-8">
+                                            <div
+                                                className="cursor-pointer"
+                                                onClick={onClickCart}
+                                            >
+                                                Cart
+                                            </div>
+                                            {showCart && (
+                                                <Cart
+                                                    setShowCart={setShowCart}
+                                                />
+                                            )}
+                                        </li>
+                                    ) : (
+                                        <></>
+                                    )}
 
                                     <li className="leading-8">
                                         <a href="/">Blog</a>

@@ -79,47 +79,53 @@ const Header = () => {
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">
-                    <div>{user.user ? <h1>loged in</h1> : <h1>guest</h1>}</div>
+                    {/* <div>{user.user ? <h1>loged in</h1> : <h1>guest</h1>}</div> */}
 
-                    {/* signin button */}
-                    <div className="cursor-pointer px-2 lg:px-3">
-                        <Link to="/signin">
-                            <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
-                                Log in
-                            </button>
-                        </Link>
-                    </div>
+                    {user.user ? (
+                        <>
+                            {/* search icon */}
+                            <div
+                                className="cursor-pointer px-2 lg:px-3"
+                                onClick={openSearch}
+                            >
+                                <BiSearch className="text-xl" />
+                            </div>
+                            {showSearch && (
+                                <SearchBar setShowSearch={setShowSearch} />
+                            )}
 
-                    {/* search icon */}
-                    <div
-                        className="cursor-pointer px-2 lg:px-3"
-                        onClick={openSearch}
-                    >
-                        <BiSearch className="text-xl" />
-                    </div>
-                    {showSearch && <SearchBar setShowSearch={setShowSearch} />}
+                            {/* cart icon */}
+                            <div
+                                className="relative cursor-pointer px-2 lg:px-3"
+                                onClick={onClickCart}
+                            >
+                                <AiOutlineShoppingCart className="text-xl" />
 
-                    {/* cart icon */}
-                    <div
-                        className="relative cursor-pointer px-2 lg:px-3"
-                        onClick={onClickCart}
-                    >
-                        <AiOutlineShoppingCart className="text-xl" />
+                                {/* item amount on cart icon     */}
+                                <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
+                                    {itemAmount}
+                                </div>
+                            </div>
+                            {showCart && <Cart setShowCart={setShowCart} />}
 
-                        {/* item amount on cart icon     */}
-                        <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
-                            {itemAmount}
+                            {/* sign-out icon */}
+                            <div
+                                onClick={handleSignout}
+                                className="hidden lg:flex cursor-pointer px-2 lg:px-3"
+                            >
+                                <VscSignOut className="text-xl" />
+                            </div>
+                        </>
+                    ) : (
+                        // login button
+                        <div className="cursor-pointer px-2 lg:px-3">
+                            <Link to="/signin">
+                                <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
+                                    Log in
+                                </button>
+                            </Link>
                         </div>
-                    </div>
-                    {showCart && <Cart setShowCart={setShowCart} />}
-
-                    {/* sign-out icon */}
-                    <div
-                        onClick={handleSignout}
-                        className="hidden lg:flex cursor-pointer px-2 lg:px-3"
-                    >
-                        <VscSignOut className="text-xl" />
-                    </div>
+                    )}
                 </div>
             </div>
         </header>
