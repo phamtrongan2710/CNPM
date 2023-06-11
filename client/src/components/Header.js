@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { signOut } from "../features/user/userSlice";
+import { clearCart } from "../features/cart/cartSlice";
 
 // icons
 import SevenIcon from "../assets/Se7enStore.svg";
@@ -20,6 +22,17 @@ const Header = () => {
     const [showSearch, setShowSearch] = useState(false);
     // cart state
     const [showCart, setShowCart] = useState(false);
+
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user);
+
+    const navigate = useNavigate();
+
+    const handleSignout = () => {
+        dispatch(signOut());
+        dispatch(clearCart());
+        navigate("/");
+    };
 
     // event listener
     useEffect(() => {
@@ -66,41 +79,53 @@ const Header = () => {
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">
-                    {/* signin button */}
-                    <div className="cursor-pointer px-2 lg:px-3">
-                        <Link to="/signin">
-                            <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
-                                Log in
-                            </button>
-                        </Link>
-                    </div>
+                    {/* <div>{user.user ? <h1>loged in</h1> : <h1>guest</h1>}</div> */}
 
-                    {/* search icon */}
-                    <div
-                        className="cursor-pointer px-2 lg:px-3"
-                        onClick={openSearch}
-                    >
-                        <BiSearch className="text-xl" />
-                    </div>
-                    {showSearch && <SearchBar setShowSearch={setShowSearch} />}
+                    {user.user ? (
+                        <>
+                            {/* search icon */}
+                            <div
+                                className="cursor-pointer px-2 lg:px-3"
+                                onClick={openSearch}
+                            >
+                                <BiSearch className="text-xl" />
+                            </div>
+                            {showSearch && (
+                                <SearchBar setShowSearch={setShowSearch} />
+                            )}
 
-                    {/* cart icon */}
-                    <div
-                        className="relative cursor-pointer px-2 lg:px-3"
-                        onClick={onClickCart}
-                    >
-                        <AiOutlineShoppingCart className="text-xl" />
+                            {/* cart icon */}
+                            <div
+                                className="relative cursor-pointer px-2 lg:px-3"
+                                onClick={onClickCart}
+                            >
+                                <AiOutlineShoppingCart className="text-xl" />
 
-                        <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
-                            {itemAmount}
+                                {/* item amount on cart icon     */}
+                                <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
+                                    {itemAmount}
+                                </div>
+                            </div>
+                            {showCart && <Cart setShowCart={setShowCart} />}
+
+                            {/* sign-out icon */}
+                            <div
+                                onClick={handleSignout}
+                                className="hidden lg:flex cursor-pointer px-2 lg:px-3"
+                            >
+                                <VscSignOut className="text-xl" />
+                            </div>
+                        </>
+                    ) : (
+                        // login button
+                        <div className="cursor-pointer px-2 lg:px-3">
+                            <Link to="/signin">
+                                <button className="text-gray-900 hover:text-white border border-gray-800 hover:bg-gray-900 focus:ring-4 focus:outline-none focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-1.5 text-center">
+                                    Log in
+                                </button>
+                            </Link>
                         </div>
-                    </div>
-                    {showCart && <Cart setShowCart={setShowCart} />}
-
-                    {/* sign-out icon */}
-                    <div className="hidden lg:flex cursor-pointer px-2 lg:px-3">
-                        <VscSignOut className="text-xl" />
-                    </div>
+                    )}
                 </div>
             </div>
         </header>

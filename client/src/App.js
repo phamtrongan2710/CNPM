@@ -21,7 +21,8 @@ function App() {
                     {publicRoutes.map((route, index) => {
                         const Page = route.component;
                         let Layout = DefaultLayout;
-                        console.log(`index: ${index}`);
+
+                        // console.log(`index: ${index}`);
 
                         if (route.layout) Layout = route.layout;
 
