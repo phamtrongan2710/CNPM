@@ -51,7 +51,7 @@ const SearchBar = ({ setShowSearch }) => {
                             <input
                                 type="text"
                                 className="w-full h-11 outline-none px-4"
-                                placeholder="Search products"
+                                placeholder="Search our products"
                                 value={searchInput}
                                 onChange={(e) => setSearchInput(e.target.value)}
                             />
@@ -112,7 +112,7 @@ const SearchBar = ({ setShowSearch }) => {
                 ) : (
                     <div>
                         <p className="mt-9 mb-7 text-center text-2xl text-slate-400">
-                            Results for "
+                            We found {searchResults.length} results for "
                             <span className="text-black">{searchInput}</span>"
                         </p>
 
