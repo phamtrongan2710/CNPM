@@ -1,7 +1,9 @@
 // import pages
 import Home from "../pages/Home/Home";
-import Products from "../pages/Products/Products";
+import Products from "../pages/Products";
 import ProductDetail from "../pages/ProductDetail";
+import Search from "../pages/Search";
+
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
 
@@ -13,7 +15,7 @@ const publicRoutes = [
     { path: "/", component: Home, layout: DefaultLayout },
     { path: "/product", component: Products, layout: DefaultLayout },
     { path: "/product/:id", component: ProductDetail, layout: DefaultLayout },
-    
+    { path: "/search", component: Search, layout: DefaultLayout },
 
     { path: "/signin", component: Signin, layout: LoginLayout },
     { path: "/signup", component: Signup, layout: LoginLayout },

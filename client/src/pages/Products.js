@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "../../api";
-
-import ProductItem from "../../components/ProductItem";
+import axios from "../api";
+// component
+import ProductItem from "../components/ProductItem";
 
 const Products = () => {
     const [data, setData] = useState([]);
@@ -19,7 +19,7 @@ const Products = () => {
         <div id="right" class="w-9/12 mt-[110px] m-auto mb-10">
             {/* heading */}
             <div class="m-auto text-center">
-                <h1 class="text-3xl  m-auto mt-[20px] item-center mb-10">
+                <h1 class="text-3xl m-auto mt-[20px] item-center mb-10">
                     Our products
                 </h1>
             </div>
