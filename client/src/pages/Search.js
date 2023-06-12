@@ -72,7 +72,7 @@ const Search = (props) => {
                 </div>
             ) : (
                 <div className="text-center">
-                    <h1 className="text-4xl mt-5 mb-7 mt-28">
+                    <h1 className="text-4xl mb-7 mt-28">
                         Discover your style with us
                     </h1>
 
