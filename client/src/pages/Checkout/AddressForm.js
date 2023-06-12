@@ -122,6 +122,18 @@ const AddressForm = () => {
                     />
                 </div>
             </div>
+
+            {/* Street Name, Building, House No. input field */}
+            <div className="mb-6">
+                <input
+                    type="text"
+                    className="font-medium p-2 border border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full disabled:bg-neutral-100 disabled:text-gray-400"
+                    placeholder="Street Name, Building, House No."
+                    name="address"
+                    required
+                    disabled={false}
+                />
+            </div>
         </div>
     );
 };
