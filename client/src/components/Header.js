@@ -76,6 +76,10 @@ const Header = () => {
                     <Link to="/product">
                         <h1>Products</h1>
                     </Link>
+
+                    <Link to="/search?query=" className="ml-5">
+                        <h1>Search our products</h1>
+                    </Link>
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">
