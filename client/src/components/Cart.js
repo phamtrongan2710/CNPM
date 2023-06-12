@@ -81,7 +81,10 @@ const Cart = ({ setShowCart }) => {
                         <div className="flex items-center justify-between py-4">
                             {/* total price */}
                             <p className="font-medium text-lg">
-                                Total: $ {total}
+                                Total:{" "}
+                                <span className="text-green-600">
+                                    $ {total}
+                                </span>
                             </p>
 
                             {/* trashcan icon (to clear cart) */}

@@ -3,7 +3,7 @@ import Home from "../pages/Home/Home";
 import Products from "../pages/Products";
 import ProductDetail from "../pages/ProductDetail";
 import Search from "../pages/Search";
-import Checkout from "../pages/Checkout";
+import Checkout from "../pages/Checkout/Checkout";
 
 import Signin from "../pages/Signin";
 import Signup from "../pages/Signup";
