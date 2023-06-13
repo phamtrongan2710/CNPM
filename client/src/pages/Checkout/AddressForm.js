@@ -5,9 +5,13 @@ import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 // toast messages
 import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+
+import { clearCart } from "../../features/cart/cartSlice";
 
 const AddressForm = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     const [curOptionProvince, setCurOptionProvince] = useState();
     const [curOptionDistrict, setCurOptionDistrict] = useState();
@@ -107,15 +111,31 @@ const AddressForm = () => {
             theme: "colored",
         });
 
-    const handleConfirmOrder = () => {
+    const [total, setTotal] = useState(0);
+    const [itemCart, setItemCart] = useState([]);
+
+    let items = useSelector((state) => state.cart.cart);
+
+    useEffect(() => {
+        setItemCart(items);
+        let temp = 0;
+
+        items.forEach(
+            (item) => (temp += +item.data.data.price * +item.data.amount)
+        );
+
+        setTotal(temp);
+    }, [items]);
+
+    const handlePlaceOrder = () => {
         // check if first name input field is empty
         if (!orderValue.firstName) {
-            notifyError("Enter first name");
+            notifyError("Enter your first name");
             return;
         }
         // check if last name input field is empty
         if (!orderValue.lastName) {
-            notifyError("Enter last name");
+            notifyError("Enter your last name");
             return;
         }
         // check if province selector is empty
@@ -139,9 +159,43 @@ const AddressForm = () => {
             return;
         }
 
-        notifySuccess("Your order has been confirmed successfully");
+        const products = [];
+        itemCart.map((item) =>
+            products.push({
+                productId: item.data.data.id,
+                quantity: item.data.amount,
+                name: item.data.data.name,
+                price: item.data.data.price,
+                type: item.data.data.type,
+            })
+        );
+        // console.log(products);
 
-        // navigate("/");
+        axios
+            .post(
+                "/order/createOrder",
+                {
+                    totalAmount: total,
+                    products: products,
+                    address: `${orderValue.address}, ${curOptionWard.label}, ${curOptionDistrict.label}, ${curOptionProvince.label}`,
+                    note: orderValue.note,
+                },
+                { withCredentials: true }
+            )
+            .then((res) => {
+                console.log(res);
+                notifySuccess("Your order has been placed successfully");
+
+                // useDispatch(clearCart());
+
+                navigate("/");
+            })
+            .catch((err) => {
+                console.log(err);
+                notifyError(
+                    "Failed to place the order. Please consider re-logging in to proceed with your purchase."
+                );
+            });
     };
 
     return (
@@ -257,10 +311,10 @@ const AddressForm = () => {
             {/* confirm button */}
             <div className="lg:mt-8">
                 <button
-                    onClick={handleConfirmOrder}
+                    onClick={handlePlaceOrder}
                     className="w-full py-2 px-7 font-medium border border-black rounded text-white bg-black hover:scale-105 transition duration-300"
                 >
-                    Confirm order
+                    Place order
                 </button>
             </div>
         </div>
