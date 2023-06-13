@@ -9,8 +9,11 @@ import OutsideAlerter from "./OutsideAlerter";
 import CartItem from "./CartItem";
 
 // icons
-import { IoMdClose } from "react-icons/io";
 import { BsFillTrashFill } from "react-icons/bs";
+import { HiArrowRight } from "react-icons/hi";
+
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
 
 const Cart = ({ setShowCart }) => {
     const [cartStyle, setCartStyle] = useState("translate-x-full");
@@ -62,9 +65,9 @@ const Cart = ({ setShowCart }) => {
                     <p className="text-2xl font-medium">Cart ({itemAmount})</p>
 
                     {/* close button */}
-                    <IoMdClose
+                    <HiArrowRight
                         onClick={closeCart}
-                        className="cursor-pointer w-8 h-8 flex justify-center items-center"
+                        className="cursor-pointer w-6 h-6 flex justify-center items-center"
                     />
                 </div>
 
@@ -81,16 +84,21 @@ const Cart = ({ setShowCart }) => {
                         <div className="flex items-center justify-between py-4">
                             {/* total price */}
                             <p className="font-medium text-lg">
-                                Total: $ {total}
+                                Total:{" "}
+                                <span className="text-green-600">
+                                    $ {total}
+                                </span>
                             </p>
 
                             {/* trashcan icon (to clear cart) */}
-                            <div
-                                onClick={() => dispatch(clearCart())}
-                                className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
-                            >
-                                <BsFillTrashFill />
-                            </div>
+                            <Tippy content="Empty cart">
+                                <div
+                                    onClick={() => dispatch(clearCart())}
+                                    className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
+                                >
+                                    <BsFillTrashFill />
+                                </div>
+                            </Tippy>
                         </div>
 
                         {/* checkout button */}

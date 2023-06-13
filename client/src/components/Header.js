@@ -15,6 +15,9 @@ import { VscSignOut } from "react-icons/vsc";
 import SearchBar from "./SearchBar";
 import Cart from "./Cart";
 
+import Tippy from "@tippyjs/react";
+import "tippy.js/dist/tippy.css";
+
 const Header = () => {
     // header state
     const [isActive, setIsActive] = useState(false);
@@ -88,37 +91,43 @@ const Header = () => {
                     {user.user ? (
                         <>
                             {/* search icon */}
-                            <div
-                                className="cursor-pointer px-2 lg:px-3"
-                                onClick={openSearch}
-                            >
-                                <BiSearch className="text-xl" />
-                            </div>
+                            <Tippy content="Search our store">
+                                <div
+                                    className="cursor-pointer px-2 lg:px-3"
+                                    onClick={openSearch}
+                                >
+                                    <BiSearch className="text-xl" />
+                                </div>
+                            </Tippy>
                             {showSearch && (
                                 <SearchBar setShowSearch={setShowSearch} />
                             )}
 
                             {/* cart icon */}
-                            <div
-                                className="relative cursor-pointer px-2 lg:px-3"
-                                onClick={onClickCart}
-                            >
-                                <AiOutlineShoppingCart className="text-xl" />
+                            <Tippy content="Cart">
+                                <div
+                                    className="relative cursor-pointer px-2 lg:px-3"
+                                    onClick={onClickCart}
+                                >
+                                    <AiOutlineShoppingCart className="text-xl" />
 
-                                {/* item amount on cart icon     */}
-                                <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
-                                    {itemAmount}
+                                    {/* item amount on cart icon     */}
+                                    <div className="inline-flex absolute -top-2 -right-0.5 justify-center items-center w-5 h-5 text-xs font-bold text-white bg-red-500 rounded-full border-1 border-white dark:border-gray-900">
+                                        {itemAmount}
+                                    </div>
                                 </div>
-                            </div>
+                            </Tippy>
                             {showCart && <Cart setShowCart={setShowCart} />}
 
                             {/* sign-out icon */}
-                            <div
-                                onClick={handleSignout}
-                                className="hidden lg:flex cursor-pointer px-2 lg:px-3"
-                            >
-                                <VscSignOut className="text-xl" />
-                            </div>
+                            <Tippy content="Sign out">
+                                <div
+                                    onClick={handleSignout}
+                                    className="hidden lg:flex cursor-pointer px-2 lg:px-3"
+                                >
+                                    <VscSignOut className="text-xl" />
+                                </div>
+                            </Tippy>
                         </>
                     ) : (
                         // login button
