@@ -2,8 +2,13 @@ import { useState, useEffect } from "react";
 import axios from "../../api";
 import axiosR from "axios";
 import Select from "react-select";
+import { useNavigate } from "react-router-dom";
+// toast messages
+import { toast } from "react-toastify";
 
 const AddressForm = () => {
+    const navigate = useNavigate();
+
     const [curOptionProvince, setCurOptionProvince] = useState();
     const [curOptionDistrict, setCurOptionDistrict] = useState();
     const [curOptionWard, setCurOptionWard] = useState();
@@ -61,9 +66,111 @@ const AddressForm = () => {
             });
     };
 
+    const [orderValue, setOrderValue] = useState({
+        optionAddress: "0",
+        address: "",
+        firstName: "",
+        lastName: "",
+        note: "",
+    });
+
+    const handleOnchangeInput = (e) => {
+        setOrderValue((prev) => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
+
+    console.log(orderValue);
+
+    // toast messages
+    const notifyError = (message) =>
+        toast.error(message, {
+            position: "top-right",
+            autoClose: 4000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+    const notifySuccess = (message) =>
+        toast.success(message, {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+        });
+
+    const handleConfirmOrder = () => {
+        // check if first name input field is empty
+        if (!orderValue.firstName) {
+            notifyError("Enter first name");
+            return;
+        }
+        // check if last name input field is empty
+        if (!orderValue.lastName) {
+            notifyError("Enter last name");
+            return;
+        }
+        // check if province selector is empty
+        if (!curOptionProvince) {
+            notifyError("Select a province");
+            return;
+        }
+        // check if district selector is empty
+        if (!curOptionDistrict) {
+            notifyError("Select a district");
+            return;
+        }
+        // check if ward selector is empty
+        if (!curOptionWard) {
+            notifyError("Select a ward");
+            return;
+        }
+        // check if detailed address input field is empty
+        if (!orderValue.address) {
+            notifyError("Enter street name, building, house no.");
+            return;
+        }
+
+        notifySuccess("Your order has been confirmed successfully");
+
+        // navigate("/");
+    };
+
     return (
-        <div className="lg:pr-10">
-            {/* <p className="text-2xl pt-4 lg:pt-0 pb-4">Address</p> */}
+        <div className="lg:pr-10 mb-4">
+            <p className="text-2xl pt-4 lg:pt-0 pb-6">Contact</p>
+
+            {/* first name & last name input field */}
+            <div className="grid grid-cols-2 gap-4 mb-8">
+                {/* first name */}
+                <input
+                    type="text"
+                    className="font-medium p-2 border border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full disabled:bg-neutral-100 disabled:text-gray-400"
+                    placeholder="First name"
+                    name="firstName"
+                    required
+                    onChange={handleOnchangeInput}
+                />
+
+                {/* last name (optional) */}
+                <input
+                    type="text"
+                    className="font-medium p-2 border border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full disabled:bg-neutral-100 disabled:text-gray-400"
+                    placeholder="Last name"
+                    name="lastName"
+                    required
+                    onChange={handleOnchangeInput}
+                />
+            </div>
+
             <p className="text-2xl pt-4 lg:pt-0 pb-6">Address</p>
 
             {/* address selectors */}
@@ -131,8 +238,30 @@ const AddressForm = () => {
                     placeholder="Street Name, Building, House No."
                     name="address"
                     required
-                    disabled={false}
+                    onChange={handleOnchangeInput}
                 />
+            </div>
+
+            {/* notes */}
+            <div className="">
+                <input
+                    type="text"
+                    className="font-medium p-2 border border-gray-300 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full disabled:bg-neutral-100 disabled:text-gray-400"
+                    placeholder="Note (optional)"
+                    name="note"
+                    required
+                    onChange={handleOnchangeInput}
+                />
+            </div>
+
+            {/* confirm button */}
+            <div className="lg:mt-8">
+                <button
+                    onClick={handleConfirmOrder}
+                    className="w-full py-2 px-7 font-medium border border-black rounded text-white bg-black hover:scale-105 transition duration-300"
+                >
+                    Confirm order
+                </button>
             </div>
         </div>
     );
