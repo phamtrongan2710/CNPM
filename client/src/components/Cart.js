@@ -85,7 +85,7 @@ const Cart = ({ setShowCart }) => {
                         <div>
                             <div className="flex items-center justify-between py-4">
                                 {/* total price */}
-                                <p className="font-medium text-lg">
+                                <p className="font-bold text-lg">
                                     Total:{" "}
                                     <span className="text-green-600">
                                         $ {total}
