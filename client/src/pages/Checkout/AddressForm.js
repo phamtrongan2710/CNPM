@@ -190,7 +190,8 @@ const AddressForm = () => {
                 console.log(res);
                 notifySuccess("Your order has been placed successfully");
 
-                handleClearCart()
+                // clear cart after placing order
+                handleClearCart();
 
                 navigate("/");
             })
