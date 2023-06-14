@@ -71,47 +71,67 @@ const Cart = ({ setShowCart }) => {
                     />
                 </div>
 
-                <div className="flex flex-col h-full pt-3 pb-10">
-                    {/* cart items */}
-                    <div className="flex-1 overflow-y-auto no-scroll">
-                        {data.map((item, index) => (
-                            <CartItem key={index} data={item} />
-                        ))}
-                    </div>
-
-                    {/* total price, clear-cart button, & checkout button container */}
-                    <div>
-                        <div className="flex items-center justify-between py-4">
-                            {/* total price */}
-                            <p className="font-medium text-lg">
-                                Total:{" "}
-                                <span className="text-green-600">
-                                    $ {total}
-                                </span>
-                            </p>
-
-                            {/* trashcan icon (to clear cart) */}
-                            <Tippy content="Empty cart">
-                                <div
-                                    onClick={() => dispatch(clearCart())}
-                                    className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
-                                >
-                                    <BsFillTrashFill />
-                                </div>
-                            </Tippy>
+                {/* check if cart is empty or not */}
+                {data.length ? (
+                    <div className="flex flex-col h-full pt-3 pb-10">
+                        {/* cart items */}
+                        <div className="flex-1 overflow-y-auto no-scroll">
+                            {data.map((item, index) => (
+                                <CartItem key={index} data={item} />
+                            ))}
                         </div>
 
-                        {/* checkout button */}
-                        <Link to="/checkout">
-                            <button
-                                onClick={closeCart}
-                                className="w-full py-2 px-7 font-medium border border-black rounded text-white bg-black hover:scale-105 transition duration-300"
-                            >
-                                Check out
-                            </button>
-                        </Link>
+                        {/* total price, clear-cart button, & checkout button container */}
+                        <div>
+                            <div className="flex items-center justify-between py-4">
+                                {/* total price */}
+                                <p className="font-medium text-lg">
+                                    Total:{" "}
+                                    <span className="text-green-600">
+                                        $ {total}
+                                    </span>
+                                </p>
+
+                                {/* trashcan icon (to clear cart) */}
+                                <Tippy content="Empty cart">
+                                    <div
+                                        onClick={() => dispatch(clearCart())}
+                                        className="cursor-pointer py-4 bg-red-500 text-white w-9 h-9 flex justify-center items-center text-xl"
+                                    >
+                                        <BsFillTrashFill />
+                                    </div>
+                                </Tippy>
+                            </div>
+
+                            {/* checkout button */}
+                            <Link to="/checkout">
+                                <button
+                                    onClick={closeCart}
+                                    className="w-full py-2 px-7 font-medium border border-black rounded text-white bg-black hover:scale-105 transition duration-300"
+                                >
+                                    Check out
+                                </button>
+                            </Link>
+                        </div>
                     </div>
-                </div>
+                ) : (
+                    <div className="mt-4">
+                        <h1 className="font-medium text-lg">
+                            Your cart is currently empty.
+                        </h1>
+
+                        <h1 className="font-medium text-lg">
+                            Take at look at our{" "}
+                            <span
+                                className="text-red-500 font-bold hover:underline"
+                                onClick={closeCart}
+                            >
+                                <Link to="/product">products</Link>
+                            </span>{" "}
+                            and discover your style.
+                        </h1>
+                    </div>
+                )}
             </OutsideAlerter>
         </div>
     );
