@@ -71,7 +71,7 @@ const Signin = () => {
             })
             .then((res) => {
                 if (res.data.accessToken) {
-                    notifySuccess("Welcome to our store");
+                    notifySuccess("Welcome to Se7en Store. Have fun shopping!");
 
                     dispatch(login(res.data));
 

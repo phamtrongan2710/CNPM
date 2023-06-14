@@ -20,6 +20,9 @@ const Search = (props) => {
     let [data, setData] = useState([]);
 
     useEffect(() => {
+        // automatically scroll to the top of the page
+        window.scrollTo(0, 0);
+
         axios
             .get(`search/items?keyword=${keyword}`)
             .then((res) => setData(res.data))
