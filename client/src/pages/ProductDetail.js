@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 // toast messages
 import { toast } from "react-toastify";
@@ -16,6 +16,9 @@ const ProductDetail = (props) => {
     const navigate = useNavigate();
 
     const [count, updateCount] = useState(1);
+
+    // user state (logged in or not)
+    const user = useSelector((state) => state.user);
 
     // scroll to the top of the page
     useEffect(() => {
@@ -32,10 +35,10 @@ const ProductDetail = (props) => {
     }
 
     // toast message
-    const notify = () =>
-        toast("Added to cart.", {
+    const notify = (message, waitingTime) =>
+        toast(message, {
             position: "top-right",
-            autoClose: 1500,
+            autoClose: waitingTime,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -64,10 +67,15 @@ const ProductDetail = (props) => {
             })
         );
 
-        notify();
+        if (user.user) {
+            notify(`${state.name} has been added to your cart.`, 2500);
+        } else {
+            notify(`${state.name} has been added to your cart.`, 2500);
+            notify("Login to see what's inside your cart.", 4500);
+        }
     };
 
-    const handleBuyNow = () => {
+    const handleBuy = () => {
         dispatch(
             addToCart({
                 data: state,
@@ -75,7 +83,12 @@ const ProductDetail = (props) => {
             })
         );
 
-        navigate("/checkout");
+        if (user.user) {
+            navigate("/checkout");
+        } else {
+            notify(`${state.name} has been added to your cart.`, 2500);
+            notify("Login to place your order.", 4500);
+        }
     };
 
     return (
@@ -156,12 +169,13 @@ const ProductDetail = (props) => {
 
                         <div>
                             <button
-                                onClick={handleBuyNow}
+                                onClick={handleBuy}
                                 type="button"
                                 id="button_right"
-                                class="w-full h-[50px] rounded-md border-black border border-solid flex-none bg-black text-white font-bold mt-[25px] duration-300 hover:scale-105"
+                                class="w-full h-[50px] rounded-md border-black border border-solid flex-none bg-black text-white mt-[25px] duration-300 hover:scale-105"
                             >
-                                Buy now
+                                Buy{" "}
+                                <span className="font-bold">{state.name}</span>
                             </button>
                         </div>
                     </div>

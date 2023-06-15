@@ -20,10 +20,10 @@ const ProductItem = ({ data }) => {
     const user = useSelector((state) => state.user);
 
     // toast message
-    const notify = (message, wait) =>
+    const notify = (message, waitingTime) =>
         toast(message, {
             position: "top-right",
-            autoClose: wait,
+            autoClose: waitingTime,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
