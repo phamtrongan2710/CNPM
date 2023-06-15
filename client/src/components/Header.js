@@ -27,6 +27,8 @@ const Header = () => {
     const [showCart, setShowCart] = useState(false);
 
     const dispatch = useDispatch();
+
+    // user state (logged in or not)
     const user = useSelector((state) => state.user);
 
     const navigate = useNavigate();

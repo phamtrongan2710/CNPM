@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 // toast messages
 import { toast } from "react-toastify";
@@ -16,11 +16,14 @@ const ProductItem = ({ data }) => {
 
     const dispatch = useDispatch();
 
+    // user state (logged in or not)
+    const user = useSelector((state) => state.user);
+
     // toast message
-    const notify = () =>
-        toast("Added to cart.", {
+    const notify = (message, wait) =>
+        toast(message, {
             position: "top-right",
-            autoClose: 1500,
+            autoClose: wait,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -32,7 +35,14 @@ const ProductItem = ({ data }) => {
     const handleAddToCart = (data) => {
         dispatch(addToCart(data));
 
-        notify();
+        if (user.user) {
+            notify("Added to cart.", 1500);
+        } else {
+            notify(
+                "Added to cart. Login to see what's inside your cart.",
+                2500
+            );
+        }
     };
 
     // console.log(data);

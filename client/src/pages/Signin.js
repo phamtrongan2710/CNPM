@@ -13,6 +13,7 @@ import SevenIcon from "../assets/Se7enStore.svg";
 const Signin = () => {
     const navigate = useNavigate();
 
+    // user state (logged in or not)
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
