@@ -4,9 +4,20 @@ import AddressForm from "./AddressForm";
 
 import { useSelector } from "react-redux";
 
+import { useNavigate } from "react-router-dom";
+
+import { useEffect } from "react";
+
 const Checkout = () => {
     // user state (logged in or not)
     const user = useSelector((state) => state.user);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!user.user) {
+            navigate("/");
+        }
+    }, []);
 
     return (
         <div className="flex md:flex-row-reverse flex-wrap px-3 lg:pt-4 lg:px-12 mt-28 mb-7">
