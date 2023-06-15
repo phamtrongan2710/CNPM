@@ -90,23 +90,19 @@ const Footer = () => {
                             <ul className="max-height-set overflow-hidden">
                                 <div className="pb-5 md:pb-0">
                                     <li className="leading-8">
-                                        <a href="/">Shirt</a>
+                                        <a href="/search?query=Shirt">Shirt</a>
                                     </li>
 
                                     <li className="leading-8">
-                                        <a href="/">Jeans</a>
+                                        <a href="/search?query=Jeans">Jeans</a>
                                     </li>
 
                                     <li className="leading-8">
-                                        <a href="/">Trousers</a>
+                                        <a href="/search?query=Dress">Dress</a>
                                     </li>
 
                                     <li className="leading-8">
-                                        <a href="/">Skirt</a>
-                                    </li>
-
-                                    <li className="leading-8">
-                                        <a href="/">Hat</a>
+                                        <a href="/search?query=Hat">Hat</a>
                                     </li>
                                 </div>
                             </ul>

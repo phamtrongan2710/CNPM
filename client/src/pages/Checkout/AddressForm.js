@@ -127,6 +127,10 @@ const AddressForm = () => {
         setTotal(temp);
     }, [items]);
 
+    const handleClearCart = () => {
+        dispatch(clearCart());
+    };
+
     const handlePlaceOrder = () => {
         // check if first name input field is empty
         if (!orderValue.firstName) {
@@ -186,7 +190,8 @@ const AddressForm = () => {
                 console.log(res);
                 notifySuccess("Your order has been placed successfully");
 
-                // useDispatch(clearCart());
+                // clear cart after placing order
+                handleClearCart();
 
                 navigate("/");
             })

@@ -1,16 +1,24 @@
-import { useLocation } from "react-router-dom";
-import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../features/cart/cartSlice";
 // toast messages
 import { toast } from "react-toastify";
+// icons
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 
 const ProductDetail = (props) => {
     const location = useLocation();
     const state = location.state;
 
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+
+    const [count, updateCount] = useState(1);
+
+    // user state (logged in or not)
+    const user = useSelector((state) => state.user);
 
     // scroll to the top of the page
     useEffect(() => {
@@ -27,10 +35,10 @@ const ProductDetail = (props) => {
     }
 
     // toast message
-    const notify = () =>
-        toast("Added to cart.", {
+    const notify = (message, waitingTime) =>
+        toast(message, {
             position: "top-right",
-            autoClose: 1500,
+            autoClose: waitingTime,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
@@ -39,15 +47,48 @@ const ProductDetail = (props) => {
             theme: "light",
         });
 
+    const addCount = () => {
+        updateCount(count + 1);
+    };
+
+    const minusCount = () => {
+        if (count <= 1) {
+            updateCount(1);
+        } else {
+            updateCount(count - 1);
+        }
+    };
+
     const handleAddToCart = () => {
         dispatch(
             addToCart({
                 data: state,
-                amount: 1,
+                amount: count,
             })
         );
 
-        notify();
+        if (user.user) {
+            notify(`${state.name} has been added to your cart.`, 2500);
+        } else {
+            notify(`${state.name} has been added to your cart.`, 2500);
+            notify("Login to see what's inside your cart.", 4500);
+        }
+    };
+
+    const handleBuy = () => {
+        dispatch(
+            addToCart({
+                data: state,
+                amount: count,
+            })
+        );
+
+        if (user.user) {
+            navigate("/checkout");
+        } else {
+            notify(`${state.name} has been added to your cart.`, 2500);
+            notify("Login to place your order.", 4500);
+        }
     };
 
     return (
@@ -76,13 +117,67 @@ const ProductDetail = (props) => {
                         </div>
 
                         {/* add-to-cart button */}
-                        <button
+                        {/* <button
                             onClick={handleAddToCart}
                             type="button"
-                            class="py-3 px-8  rounded-md border border-black border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105"
+                            className="py-3 px-8  rounded-md border border-black border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105"
                         >
                             Add to cart
-                        </button>
+                        </button> */}
+
+                        <p className="font-medium text-lg hidden md:block mt-8">
+                            Quantity{" "}
+                        </p>
+
+                        <div className="h-[50px] flex justify-between mt-[10px]">
+                            {/* quantity control section */}
+                            <div className="w-1/6 flex flex-1 items-center h-full text-primary font-medium  rounded bg-slate-200">
+                                {/* minus icon (to decrease product's quantity) */}
+                                <button
+                                    onClick={minusCount}
+                                    className="flex-1 flex justify-center items-center cursor-pointer h-full"
+                                >
+                                    <AiOutlineMinus />
+                                </button>
+
+                                {/* product quantity */}
+                                <div className="h-full flex justify-center items-center px-2">
+                                    {count}
+                                </div>
+
+                                {/* plus icon (to increase product quantity) */}
+                                <button
+                                    onClick={addCount}
+                                    className="flex-1 flex justify-center items-center cursor-pointer h-full"
+                                >
+                                    <AiOutlinePlus />
+                                </button>
+                            </div>
+
+                            {/* white space */}
+                            <div className="w-1/6"></div>
+
+                            {/* "add to cart" button */}
+                            <button
+                                onClick={handleAddToCart}
+                                type="button"
+                                className="w-4/6 py-3 px-8 rounded-md border-2 border-red-500 text-red-500 font-bold border-solid flex-none transition ease-in-out duration-300 hover:scale-105"
+                            >
+                                Add to cart
+                            </button>
+                        </div>
+
+                        <div>
+                            <button
+                                onClick={handleBuy}
+                                type="button"
+                                id="button_right"
+                                class="w-full h-[50px] rounded-md border-black border border-solid flex-none bg-black text-white mt-[25px] duration-300 hover:scale-105"
+                            >
+                                Buy{" "}
+                                <span className="font-bold">{state.name}</span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -13,6 +13,7 @@ import SevenIcon from "../assets/Se7enStore.svg";
 const Signin = () => {
     const navigate = useNavigate();
 
+    // user state (logged in or not)
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
 
@@ -71,7 +72,7 @@ const Signin = () => {
             })
             .then((res) => {
                 if (res.data.accessToken) {
-                    notifySuccess("Welcome to our store");
+                    notifySuccess("Welcome to Se7en Store. Have fun shopping!");
 
                     dispatch(login(res.data));
 

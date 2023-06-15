@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 // icons
-import { HiMinusSm } from "react-icons/hi";
-import { IoMdAdd } from "react-icons/io";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { IoMdClose } from "react-icons/io";
 
 import { useDispatch } from "react-redux";
@@ -61,9 +60,9 @@ const CartItem = ({ data }) => {
                     {/* quantity control section, item price  & final price */}
                     <div className="flex gap-x-2 h-[36px] text-sm">
                         {/* quantity control section */}
-                        <div className="flex flex-1 max-w-[100px] items-center h-full  text-primary font-medium  rounded bg-slate-200">
+                        <div className="flex flex-1 max-w-[100px] items-center h-full text-primary font-medium rounded bg-slate-200">
                             {/* minus icon (to decrease product's quantity) */}
-                            <div
+                            <button
                                 onClick={() =>
                                     dispatch(
                                         decreaseQuantity(data.data.data.id)
@@ -71,8 +70,8 @@ const CartItem = ({ data }) => {
                                 }
                                 className="flex-1 flex justify-center items-center cursor-pointer h-full"
                             >
-                                <HiMinusSm />
-                            </div>
+                                <AiOutlineMinus />
+                            </button>
 
                             {/* product quantity */}
                             <div className="h-full flex justify-center items-center px-2">
@@ -80,7 +79,7 @@ const CartItem = ({ data }) => {
                             </div>
 
                             {/* plus icon (to increase product quantity) */}
-                            <div
+                            <button
                                 onClick={() =>
                                     dispatch(
                                         increaseQuantity(data.data.data.id)
@@ -88,8 +87,8 @@ const CartItem = ({ data }) => {
                                 }
                                 className="flex-1 flex justify-center items-center cursor-pointer h-full"
                             >
-                                <IoMdAdd />
-                            </div>
+                                <AiOutlinePlus />
+                            </button>
                         </div>
 
                         {/* item price */}

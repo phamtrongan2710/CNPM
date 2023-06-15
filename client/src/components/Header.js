@@ -27,6 +27,8 @@ const Header = () => {
     const [showCart, setShowCart] = useState(false);
 
     const dispatch = useDispatch();
+
+    // user state (logged in or not)
     const user = useSelector((state) => state.user);
 
     const navigate = useNavigate();
@@ -75,12 +77,12 @@ const Header = () => {
                     </a>
                 </div>
 
-                <div className="flex-1 flex items-center">
+                <div className="flex-1 flex items-center font-medium">
                     <Link to="/product">
                         <h1>Products</h1>
                     </Link>
 
-                    <Link to="/search?query=" className="ml-5">
+                    <Link to="/search?query=" className="ml-7">
                         <h1>Search our products</h1>
                     </Link>
                 </div>
