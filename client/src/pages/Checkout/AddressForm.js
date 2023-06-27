@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "../../api";
 import axiosR from "axios";
 import Select from "react-select";
@@ -9,12 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { clearCart } from "../../features/cart/cartSlice";
 
-import { useSocket } from "../../hooks/hooks.js";
+import SocketContext from "../../contexts/socket";
 
 const AddressForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    const socket = useSocket();
+    const socket = useContext(SocketContext);
 
     const [curOptionProvince, setCurOptionProvince] = useState();
     const [curOptionDistrict, setCurOptionDistrict] = useState();
