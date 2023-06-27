@@ -131,7 +131,7 @@ const ProductDetail = (props) => {
 
                         <div className="h-[50px] flex justify-between mt-[10px]">
                             {/* quantity control section */}
-                            <div className="w-1/6 flex flex-1 items-center h-full text-primary font-medium  rounded bg-slate-200">
+                            <div className="w-1/6 flex flex-1 items-center h-full text-primary font-medium rounded bg-slate-200">
                                 {/* minus icon (to decrease product's quantity) */}
                                 <button
                                     onClick={minusCount}

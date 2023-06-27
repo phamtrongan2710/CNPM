@@ -88,7 +88,7 @@ const Header = () => {
                 </div>
 
                 <div className="flex-1 flex items-center justify-end">
-                    {/* <div>{user.user ? <h1>loged in</h1> : <h1>guest</h1>}</div> */}
+                    {/* <div>{user.user ? <h1>logged in</h1> : <h1>guest</h1>}</div> */}
 
                     {user.user ? (
                         <>
