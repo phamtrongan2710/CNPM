@@ -9,9 +9,12 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { clearCart } from "../../features/cart/cartSlice";
 
+import { useSocket } from "../../hooks/hooks.js";
+
 const AddressForm = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const socket = useSocket();
 
     const [curOptionProvince, setCurOptionProvince] = useState();
     const [curOptionDistrict, setCurOptionDistrict] = useState();
@@ -189,6 +192,7 @@ const AddressForm = () => {
             .then((res) => {
                 console.log(res);
                 notifySuccess("Your order has been placed successfully");
+                socket.emit("newOrder");
 
                 // clear cart after placing order
                 handleClearCart();
