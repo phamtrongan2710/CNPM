@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "../api";
 // toast messages
-import { toast } from "react-toastify";
+import { toast, Flip } from "react-toastify";
 
 import { useSelector, useDispatch } from "react-redux";
 import { login } from "../features/user/userSlice";
@@ -51,6 +51,7 @@ const Signin = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
+            transition: Flip,
         });
 
     const handleLogin = async () => {

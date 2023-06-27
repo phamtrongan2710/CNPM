@@ -4,7 +4,7 @@ import axiosR from "axios";
 import Select from "react-select";
 import { useNavigate } from "react-router-dom";
 // toast messages
-import { toast } from "react-toastify";
+import { toast, Flip } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 
 import { clearCart } from "../../features/cart/cartSlice";
@@ -112,6 +112,7 @@ const AddressForm = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
+            transition: Flip,
         });
 
     const [total, setTotal] = useState(0);
