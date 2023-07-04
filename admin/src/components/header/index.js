@@ -4,6 +4,8 @@ import { UserOutlined, LogoutOutlined } from "@ant-design/icons";
 import "./style.css";
 import authService from "../../services/Auth";
 import Notification from "../notification";
+import headLogo from "../../assets/imgs/Se7enStore.svg";
+import logo from "../../assets/imgs/7.png";
 
 function Header() {
   const [username, setUsername] = useState(localStorage.getItem("user"));
@@ -59,7 +61,13 @@ function Header() {
         {" "}
         <img
           className="img-header"
-          src="https://cdn.shopify.com/s/files/1/0591/1350/4958/files/3.png?v=1628328728&width=360"
+          src={logo}
+          width = "50"
+          height = "50"
+        />
+        <img
+          className="img-header"
+          src="/static/media/Se7enStore.9a9b90593eba9f6eafff25a43e63eea3.svg"
         />
       </Typography.Title>
       <Space size={"large"}>

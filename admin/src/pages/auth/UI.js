@@ -13,7 +13,6 @@ function UI() {
       <div>
         <img className='img-carousel' src='https://www.turing.com/blog/wp-content/uploads/2022/02/great-programmer.jpg'></img>
       </div>
-
     </Carousel>
 
   )
