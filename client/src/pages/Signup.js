@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "../api";
 
 // toast messages
-import { toast } from "react-toastify";
+import { Flip, toast } from "react-toastify";
 
 const Signup = () => {
     const navigate = useNavigate();
@@ -45,6 +45,7 @@ const Signup = () => {
             draggable: true,
             progress: undefined,
             theme: "colored",
+            transition: Flip,
         });
 
     const handleSignUp = () => {
