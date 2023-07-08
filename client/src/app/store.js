@@ -21,25 +21,6 @@ const persistConfig = {
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
-// export default configureStore({
-//     reducer: {
-//         cart: persistedReducer,
-//     },
-//     middleware: (getDefaultMiddleware) =>
-//         getDefaultMiddleware({
-//             serializableCheck: {
-//                 ignoredActions: [
-//                     FLUSH,
-//                     REHYDRATE,
-//                     PAUSE,
-//                     PERSIST,
-//                     PURGE,
-//                     REGISTER,
-//                 ],
-//             },
-//         }),
-// });
-
 export default configureStore({
     reducer: persistedReducer,
     devTools: process.env.NODE_ENV !== "production",
