@@ -23,6 +23,10 @@ const Products = () => {
     }, []);
     console.log(data);
 
+    const resetProduct = () => {
+        setFilteredData(data);
+    };
+
     // filter shirts from data
     const getDataShirt = () => {
         const filteredShirt = data.filter((item) => item.type === "shirts");
@@ -64,9 +68,11 @@ const Products = () => {
             <div className="flex justify-between pb-4">
                 {/* filter */}
                 <div className="w-36 flex-none text-left">
-                    <h3 className="text-3xl mb-[50px] font-medium">Filters</h3>
+                    {/* heading */}
+                    <h3 className="text-2xl mb-[25px] font-bold">Filters</h3>
 
-                    <div className="w-full mt-[45px]">
+                    {/* price filter */}
+                    <div className="w-full mt-[25px]">
                         <h4 className=" mb-4 !text-lg font-medium">Prices</h4>
 
                         <div className="text-gray-400">
@@ -75,33 +81,27 @@ const Products = () => {
                             </p>
 
                             <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a className="underline-hover-effect" href="">
-                                    $50-$100
-                                </a>
+                                $50-$100
                             </p>
 
                             <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a className="underline-hover-effect" href="">
-                                    $100-$150
-                                </a>
+                                $100-$150
                             </p>
 
                             <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a className="underline-hover-effect" href="">
-                                    $150-$200
-                                </a>
+                                $150-$200
                             </p>
 
                             <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a className="underline-hover-effect" href="">
-                                    $300-$400
-                                </a>
+                                $300-$400
                             </p>
                         </div>
                     </div>
 
+                    {/* category filter */}
                     <div className="w-full mt-[45px]">
                         <h4 className=" mb-4 !text-lg font-medium">Category</h4>
+
                         <div className="text-gray-400">
                             <p
                                 className="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
@@ -132,6 +132,18 @@ const Products = () => {
                             </p>
                         </div>
                     </div>
+
+                    {/* back to all products */}
+                    {JSON.stringify(data) !== JSON.stringify(filteredData) ? (
+                        <h4
+                            className="mb-4 mt-[20px] !text-lg font-medium hover:underline hover:cursor-pointer"
+                            onClick={resetProduct}
+                        >
+                            All products
+                        </h4>
+                    ) : (
+                        <></>
+                    )}
                 </div>
 
                 <div className="w-11/12">
