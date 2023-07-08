@@ -91,7 +91,7 @@ const Signin = () => {
         <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0 w-full">
             <Link
                 to="/"
-                className="flex items-center mb-12 text-2xl font-semibold text-gray-900"
+                className="flex items-center mb-6 text-2xl font-semibold text-gray-900 blur-[2px] hover:blur-none"
             >
                 <img className="w-20 h-20 mr-2" src={SevenIcon} />
             </Link>

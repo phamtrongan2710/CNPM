@@ -177,7 +177,6 @@ const AddressForm = () => {
                 type: item.data.data.type,
             })
         );
-        // console.log(products);
 
         axios
             .post(
