@@ -52,81 +52,80 @@ const Products = () => {
     };
 
     return (
-        <div id="right" class="w-9/12 mt-[110px] m-auto mb-10">
+        <div className="w-full px-16 mt-[110px]">
             {/* heading */}
-            <div class="m-auto text-center">
-                <h1 class="text-3xl m-auto mt-[20px] item-center mb-10">
+            <div className="m-auto text-center">
+                <h1 className="text-3xl mt-[20px] item-center mb-10">
                     Our products
                 </h1>
             </div>
 
-            <div
-                id="img-product"
-                class=" flex mt-[110px] w-11/12 m-auto justify-between "
-            >
-                {/* <Filter /> */}
-                <div id="left" class="w-1/5 flex-none  text-left">
-                    <h3 class="text-3xl mb-[50px] font-medium">Filters</h3>
+            {/* filter & product items container */}
+            <div className="flex justify-between pb-4">
+                {/* filter */}
+                <div className="w-36 flex-none text-left">
+                    <h3 className="text-3xl mb-[50px] font-medium">Filters</h3>
 
-                    <div class="w-95/100 mt-[45px]">
-                        <h4 class=" mb-4 !text-lg font-medium">Prices</h4>
-                        <div class="text-gray-400">
-                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                    <div className="w-full mt-[45px]">
+                        <h4 className=" mb-4 !text-lg font-medium">Prices</h4>
+
+                        <div className="text-gray-400">
+                            <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
                                 <div>$0-$50</div>
                             </p>
 
-                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a class="underline-hover-effect" href="">
+                            <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a className="underline-hover-effect" href="">
                                     $50-$100
                                 </a>
                             </p>
 
-                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a class="underline-hover-effect" href="">
+                            <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a className="underline-hover-effect" href="">
                                     $100-$150
                                 </a>
                             </p>
 
-                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a class="underline-hover-effect" href="">
+                            <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a className="underline-hover-effect" href="">
                                     $150-$200
                                 </a>
                             </p>
 
-                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a class="underline-hover-effect" href="">
+                            <p className="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a className="underline-hover-effect" href="">
                                     $300-$400
                                 </a>
                             </p>
                         </div>
                     </div>
 
-                    <div class="w-95/100  mt-[45px]">
-                        <h4 class=" mb-4 !text-lg font-medium">Category</h4>
-                        <div class="text-gray-400">
+                    <div className="w-full mt-[45px]">
+                        <h4 className=" mb-4 !text-lg font-medium">Category</h4>
+                        <div className="text-gray-400">
                             <p
-                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                className="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
                                 onClick={getDataShirt}
                             >
                                 Shirt
                             </p>
 
                             <p
-                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                className="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
                                 onClick={getDataPants}
                             >
                                 Pants
                             </p>
 
                             <p
-                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                className="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
                                 onClick={getDataDress}
                             >
                                 Dress
                             </p>
 
                             <p
-                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                className="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
                                 onClick={getDataHat}
                             >
                                 Hat
@@ -135,9 +134,8 @@ const Products = () => {
                     </div>
                 </div>
 
-                {/* products */}
-                <div id="right" class="w-9/12 flex-none">
-                    <div class="grid grid-cols-4 gap-x-6 gap-y-90">
+                <div className="w-11/12">
+                    <div className="flex flex-start flex-wrap">
                         {filteredData.map((item, index) => (
                             <ProductItem key={index} data={item} />
                         ))}
