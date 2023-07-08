@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "../api";
-import Filter from "../components/Filter";
 // component
 import ProductItem from "../components/ProductItem";
 
