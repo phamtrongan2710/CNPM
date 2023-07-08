@@ -9,7 +9,7 @@
 20120267 – Nguyễn Tiến Đạt (Tester)  
 
 # 2. Tính năng 
-## Chức năng chung: 
+## Chức năng chung
 1. Đăng ký tài khoản, đăng nhập
 2. Chat giữa khách và quản trị viên
 

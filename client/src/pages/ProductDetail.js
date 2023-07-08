@@ -116,15 +116,6 @@ const ProductDetail = (props) => {
                             $ {state.price}
                         </div>
 
-                        {/* add-to-cart button */}
-                        {/* <button
-                            onClick={handleAddToCart}
-                            type="button"
-                            className="py-3 px-8  rounded-md border border-black border-solid flex-none transition ease-in-out duration-300 hover:bg-black hover:text-white hover:scale-105"
-                        >
-                            Add to cart
-                        </button> */}
-
                         <p className="font-medium text-lg hidden md:block mt-8">
                             Quantity{" "}
                         </p>

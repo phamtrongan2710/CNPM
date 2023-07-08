@@ -51,7 +51,7 @@ const ProductItem = ({ data }) => {
         <div>
             <div
                 className={
-                    "md:px-4  pb-10 transition duration-200 " +
+                    "md:px-4 pb-10 transition duration-200 " +
                     (isHoverCard ? "shadow-xl" : "shadow-none")
                 }
                 onMouseEnter={() => setIsHoverCard(true)}
