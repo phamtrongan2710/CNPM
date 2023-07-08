@@ -18,6 +18,8 @@ import Cart from "./Cart";
 import Tippy from "@tippyjs/react";
 import "tippy.js/dist/tippy.css";
 
+import { toast, Flip } from "react-toastify";
+
 const Header = () => {
     // header state
     const [isActive, setIsActive] = useState(false);
@@ -37,6 +39,18 @@ const Header = () => {
         dispatch(signOut());
         dispatch(clearCart());
         navigate("/");
+
+        toast("See you soon!", {
+            position: "top-center",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+            transition: Flip,
+        });
     };
 
     // event listener
