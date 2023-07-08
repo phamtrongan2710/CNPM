@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "../api";
+import Filter from "../components/Filter";
 // component
 import ProductItem from "../components/ProductItem";
 
@@ -26,11 +27,26 @@ const Products = () => {
 
             {/* products */}
             {/* <div class="grid grid-cols-5 gap-x-4 gap-y-90"> */}
-            <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
+            {/* <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                 {data.map((item, index) => (
-                    // <Products_Item data={item} />
                     <ProductItem data={item} />
                 ))}
+            </div> */}
+
+            <div
+                id="img-product"
+                class=" flex mt-[110px] w-11/12 m-auto justify-between "
+            >
+                <Filter />
+
+                <div id="right" class="w-9/12 flex-none">
+                    {/* <div className="grid grid-cols-2 lg:grid-cols-5 gap-4"> */}
+                    <div class="grid grid-cols-4 gap-x-6 gap-y-90">
+                        {data.map((item, index) => (
+                            <ProductItem data={item} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     );
