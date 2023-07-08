@@ -37,7 +37,64 @@ const Products = () => {
                 id="img-product"
                 class=" flex mt-[110px] w-11/12 m-auto justify-between "
             >
-                <Filter />
+                {/* <Filter /> */}
+                <div id="left" class="w-1/5 flex-none  text-left">
+                    <h3 class="text-3xl mb-[50px] font-medium">Filters</h3>
+
+                    <div class="w-95/100 mt-[45px]">
+                        <h4 class=" mb-4 !text-lg font-medium">Prices</h4>
+                        <div class="text-gray-400">
+                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <div>$0-$50</div>
+                            </p>
+
+                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a class="underline-hover-effect" href="">
+                                    $50-$100
+                                </a>
+                            </p>
+
+                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a class="underline-hover-effect" href="">
+                                    $100-$150
+                                </a>
+                            </p>
+
+                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a class="underline-hover-effect" href="">
+                                    $150-$200
+                                </a>
+                            </p>
+
+                            <p class="mb-[10px] hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a class="underline-hover-effect" href="">
+                                    $300-$400
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="w-95/100  mt-[45px]">
+                        <h4 class=" mb-4 !text-lg font-medium">Category</h4>
+                        <div class="text-gray-400">
+                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a href="">Shirt</a>
+                            </p>
+
+                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a href="">Jeans</a>
+                            </p>
+
+                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a href="">Dress</a>
+                            </p>
+
+                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
+                                <a href="">Hat</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
                 <div id="right" class="w-9/12 flex-none">
                     {/* <div className="grid grid-cols-2 lg:grid-cols-5 gap-4"> */}
