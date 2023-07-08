@@ -7,35 +7,49 @@ import ProductItem from "../components/ProductItem";
 
 const Products = () => {
     const [data, setData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
 
     // fetch all products
     useEffect(() => {
         axios
             .get("product/getAllProduct")
-            .then((res) => setData(res.data))
+            .then((res) => {
+                setData(res.data);
+
+                // Initialize filteredData with all products
+                setFilteredData(res.data);
+            })
             .catch((e) => console.log(e));
     }, []);
     console.log(data);
 
+    // filter shirts from data
     const getDataShirt = () => {
-        const filteredData = data.filter((item) => {
-            return item.type === "shirts";
-        });
+        const filteredShirt = data.filter((item) => item.type === "shirts");
 
-        console.log(filteredData);
+        setFilteredData(filteredShirt);
     };
 
+    // filter pants from data
     const getDataPants = () => {
-        const filteredData = data.filter((item) => {
-            return item.type === "pants";
-        });
+        const filteredPants = data.filter((item) => item.type === "pants");
 
-        console.log(filteredData);
+        setFilteredData(filteredPants);
     };
 
-    // const displayProducts = (data) => {
-    //     return data.map((item, index) => <ProductItem data={item} />);
-    // };
+    // filter dresses from data
+    const getDataDress = () => {
+        const filteredDress = data.filter((item) => item.type === "dresses");
+
+        setFilteredData(filteredDress);
+    };
+
+    // filter hats from data
+    const getDataHat = () => {
+        const filteredHat = data.filter((item) => item.type === "hats");
+
+        setFilteredData(filteredHat);
+    };
 
     return (
         <div id="right" class="w-9/12 mt-[110px] m-auto mb-10">
@@ -45,14 +59,6 @@ const Products = () => {
                     Our products
                 </h1>
             </div>
-
-            {/* products */}
-            {/* <div class="grid grid-cols-5 gap-x-4 gap-y-90"> */}
-            {/* <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
-                {data.map((item, index) => (
-                    <ProductItem data={item} />
-                ))}
-            </div> */}
 
             <div
                 id="img-product"
@@ -98,33 +104,43 @@ const Products = () => {
                     <div class="w-95/100  mt-[45px]">
                         <h4 class=" mb-4 !text-lg font-medium">Category</h4>
                         <div class="text-gray-400">
-                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                {/* <a href="">Shirt</a> */}
-                                <div onClick={getDataShirt}>Shirt</div>
+                            <p
+                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                onClick={getDataShirt}
+                            >
+                                Shirt
                             </p>
 
-                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a href="">Pants</a>
+                            <p
+                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                onClick={getDataPants}
+                            >
+                                Pants
                             </p>
 
-                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a href="">Dress</a>
+                            <p
+                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                onClick={getDataDress}
+                            >
+                                Dress
                             </p>
 
-                            <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a href="">Hat</a>
+                            <p
+                                class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black"
+                                onClick={getDataHat}
+                            >
+                                Hat
                             </p>
                         </div>
                     </div>
                 </div>
 
+                {/* products */}
                 <div id="right" class="w-9/12 flex-none">
-                    {/* <div className="grid grid-cols-2 lg:grid-cols-5 gap-4"> */}
                     <div class="grid grid-cols-4 gap-x-6 gap-y-90">
-                        {data.map((item, index) => (
-                            <ProductItem data={item} />
+                        {filteredData.map((item, index) => (
+                            <ProductItem key={index} data={item} />
                         ))}
-                        {/* {displayProducts(data)} */}
                     </div>
                 </div>
             </div>
