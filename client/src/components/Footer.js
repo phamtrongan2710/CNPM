@@ -94,7 +94,7 @@ const Footer = () => {
                                     </li>
 
                                     <li className="leading-8">
-                                        <a href="/search?query=Jeans">Jeans</a>
+                                        <a href="/search?query=Jeans">Pants</a>
                                     </li>
 
                                     <li className="leading-8">

@@ -15,6 +15,27 @@ const Products = () => {
             .then((res) => setData(res.data))
             .catch((e) => console.log(e));
     }, []);
+    console.log(data);
+
+    const getDataShirt = () => {
+        const filteredData = data.filter((item) => {
+            return item.type === "shirts";
+        });
+
+        console.log(filteredData);
+    };
+
+    const getDataPants = () => {
+        const filteredData = data.filter((item) => {
+            return item.type === "pants";
+        });
+
+        console.log(filteredData);
+    };
+
+    // const displayProducts = (data) => {
+    //     return data.map((item, index) => <ProductItem data={item} />);
+    // };
 
     return (
         <div id="right" class="w-9/12 mt-[110px] m-auto mb-10">
@@ -78,11 +99,12 @@ const Products = () => {
                         <h4 class=" mb-4 !text-lg font-medium">Category</h4>
                         <div class="text-gray-400">
                             <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a href="">Shirt</a>
+                                {/* <a href="">Shirt</a> */}
+                                <div onClick={getDataShirt}>Shirt</div>
                             </p>
 
                             <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
-                                <a href="">Jeans</a>
+                                <a href="">Pants</a>
                             </p>
 
                             <p class="mb-[10px] hover:underline hover:cursor-pointer transition ease-in-out hover:text-black">
@@ -102,6 +124,7 @@ const Products = () => {
                         {data.map((item, index) => (
                             <ProductItem data={item} />
                         ))}
+                        {/* {displayProducts(data)} */}
                     </div>
                 </div>
             </div>
