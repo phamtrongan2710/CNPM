@@ -17,6 +17,9 @@ const Checkout = () => {
         if (!user.user) {
             navigate("/");
         }
+
+        // automatically scroll to the top of the page
+        window.scrollTo(0, 0);
     }, []);
 
     return (

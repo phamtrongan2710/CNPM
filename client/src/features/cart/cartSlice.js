@@ -9,19 +9,6 @@ export const cartSlice = createSlice({
 
     reducers: {
         addToCart: (state, action) => {
-            // // Receives the item object to be added to the state as payload
-            // // Firstly, check if the item already exists using the `find` method
-            // const itemInCart = state.cart.find(
-            //     (item) => item.id === action.payload.id
-            // );
-
-            // if (itemInCart) {
-            //     // if the item exists, increment its quantity
-            //     itemInCart.quantity++;
-            // } else {
-            //     // if the item does not exists, add  it to the state using the `push` method
-            //     state.cart.push({ ...action.payload, quantity: 1 });
-            // }
             let contain = false;
 
             state.cart.map((item, index) => {
@@ -39,7 +26,7 @@ export const cartSlice = createSlice({
                 if (item.data.data.id == action.payload) {
                     item.data.amount += 1;
                 }
-                
+
                 arr = [...arr, item];
             });
 

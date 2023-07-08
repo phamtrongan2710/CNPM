@@ -10,6 +10,9 @@ const Products = () => {
 
     // fetch all products
     useEffect(() => {
+        // automatically scroll to the top of the page
+        window.scrollTo(0, 0);
+
         axios
             .get("product/getAllProduct")
             .then((res) => {
