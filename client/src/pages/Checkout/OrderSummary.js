@@ -125,6 +125,14 @@ const OrderSummary = () => {
                         </div>
                     </div>
 
+                    {/* COD reminder */}
+                    <div className="py-3 my-4 border-b">
+                        <p className="text-gray-700">
+                            Cash on delivery. Please contact us if you require
+                            assistance or wish to make alternate arrangements.
+                        </p>
+                    </div>
+
                     {/* total price */}
                     <div className="lg:mb-4 flex items-center justify-between font-medium">
                         <p className="text-xl">Total</p>
