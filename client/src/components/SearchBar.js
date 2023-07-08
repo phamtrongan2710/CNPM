@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-// import axios from "axios";
 import axios from "../api";
 // components
 import OutsideAlerter from "./OutsideAlerter";
@@ -70,7 +69,7 @@ const SearchBar = ({ setShowSearch }) => {
                     </div>
                 </div>
 
-                {/* if user doesn't type anything to the search box, show popular searches */}
+                {/* if user doesn't type anything to the search box, show popular searches. Else, show search results */}
                 {!searchInput ? (
                     <div className="flex md:justify-center mt-3 flex-wrap">
                         <span className="text-[#666] mr-4">

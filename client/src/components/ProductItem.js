@@ -45,8 +45,6 @@ const ProductItem = ({ data }) => {
         }
     };
 
-    // console.log(data);
-
     return (
         <div>
             <div
@@ -95,9 +93,6 @@ const ProductItem = ({ data }) => {
                             {/* view-product-detail button */}
                             <Link to={`/product/${data.id}`} state={data}>
                                 <button
-                                    // className={
-                                    //     "w-1/2 shadow-md font-medium rounded p-2 bg-white hover:bg-black hover:text-white transition duration-200"
-                                    // }
                                     className={
                                         "w-1/2 shadow-md font-medium rounded p-2 bg-white hover:bg-black hover:text-white transition duration-200"
                                     }
@@ -137,8 +132,6 @@ const ProductItem = ({ data }) => {
 
                     {/* color(s) */}
                     <div className="mt-3 flex items-center flex-wrap">
-                        {/* <div className="mr-2 mt-1">Available color</div> */}
-
                         {data.colors.map((item, index) => {
                             return (
                                 <div
