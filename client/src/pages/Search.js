@@ -64,7 +64,6 @@ const Search = (props) => {
 
                     <div className="mt-7 mb-7 px-20">
                         <div className="w-78/100 m-auto">
-                            {/* <div className="grid grid-cols-4 gap-x-6 gap-4"> */}
                             <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                                 {data.map((item, index) => (
                                     <ProductItem data={item} />

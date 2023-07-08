@@ -1,6 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import axios from "../api";
 // toast messages
 import { toast, Flip } from "react-toastify";
@@ -89,12 +89,12 @@ const Signin = () => {
 
     return (
         <div className="flex flex-col items-center justify-center mx-auto md:h-screen lg:py-0 w-full">
-            {/* <Link
+            <Link
                 to="/"
                 className="flex items-center mb-12 text-2xl font-semibold text-gray-900"
             >
                 <img className="w-20 h-20 mr-2" src={SevenIcon} />
-            </Link> */}
+            </Link>
 
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8 w-full">
                 {/* login header */}
@@ -149,14 +149,6 @@ const Signin = () => {
                                 </label>
                             </div>
                         </div>
-
-                        {/* forgot password button */}
-                        {/* <a
-                            href="#"
-                            className="text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
-                        >
-                            Forgot password?
-                        </a> */}
                     </div>
 
                     {/* login button */}
